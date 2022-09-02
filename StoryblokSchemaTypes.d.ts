@@ -47,12 +47,12 @@ export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
   link_scope?: string;
 }
 
-export interface StoryblokSectionSchemaFieldGrouping extends Omit<StoryblokGenericFieldType, 'translatable' | 'description'> {
+export interface StoryblokSectionSchemaFieldGrouping extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
   type: 'section';
   keys: string[]
 }
 
-export interface StoryblokTabSchemaFieldGrouping extends Omit<StoryblokGenericFieldType, 'translatable' | 'description'> {
+export interface StoryblokTabSchemaFieldGrouping extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
   type: 'tab';
   keys: string[]
 }
