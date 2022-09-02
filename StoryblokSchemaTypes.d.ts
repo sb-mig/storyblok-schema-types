@@ -38,13 +38,13 @@ export interface StoryblokCustomFieldType extends StoryblokGenericFieldType {
 
 export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
   type: 'multilink';
-  email_link_type: boolean;
-  asset_link_type: boolean;
-  show_anchor: boolean;
-  restrict_content_types: boolean;
-  component_whitelist: string[];
-  force_link_scope: boolean;
-  link_scope: string;
+  email_link_type?: boolean;
+  asset_link_type?: boolean;
+  show_anchor?: boolean;
+  restrict_content_types?: boolean;
+  component_whitelist?: string[];
+  force_link_scope?: boolean;
+  link_scope?: string;
 }
 
 export interface StoryblokSectionSchemaFieldGrouping extends Omit<StoryblokGenericFieldType, 'translatable' | 'description'> {
