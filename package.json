@@ -1,0 +1,12 @@
+{
+  "name": "storyblok-schema-types",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./StoryblokSchemaTypes.d.ts",
+  "types": "./StoryblokSchemaTypes.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcin Krawczyk <marckraw@icloud.com>",
+  "license": "ISC"
+}
