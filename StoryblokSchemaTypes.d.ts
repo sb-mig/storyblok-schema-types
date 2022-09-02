@@ -74,6 +74,7 @@ export interface StoryblokOptionsFieldType extends StoryblokGenericFieldType {
 
 export interface StoryblokOptionFieldType extends StoryblokGenericFieldType {
   type: 'option';
+  options?: StoryblokKeyValueOptions[];
   source?: 'internal_languages' | 'internal_stories' | 'external' | 'internal' | '';
   datasource_slug?: string;
   external_datasource?: string;
