@@ -208,11 +208,11 @@ export interface StoryblokComponentSchema {
 }
 
 export interface StoryblokComponentSchemaBase {
-  name?: string;
-  display_name?: string;
+  name: string;
+  display_name: string;
   component_group_name?: string;
-  is_root?: boolean;
-  is_nestable?: boolean;
+  is_root: boolean;
+  is_nestable: boolean;
   schema?: StoryblokComponentSchema;
   image?: any;
   preview_field?: any;
