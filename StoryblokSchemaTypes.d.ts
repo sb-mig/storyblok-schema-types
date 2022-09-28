@@ -19,6 +19,16 @@ export interface StoryblokLinkTypeDeliveryApi {
   cached_url: string;
 }
 
+export interface StoryblokAssetTypeDeliveryApi {
+  fieldtype: 'asset',
+  name: string;
+  title: string;
+  id: number;
+  is_external_url: boolean;
+  filename: string;
+  focus: string;
+}
+
 export interface StoryblokBloksFieldType extends StoryblokGenericFieldType {
   type: 'bloks';
   default_value?: string;
@@ -92,7 +102,7 @@ export interface StoryblokAssetFieldType extends StoryblokGenericFieldType {
   type: 'asset';
   filetypes: FileTypes[] // empty array means - every filetype
   allow_external_url?: boolean
-  asset_folder_id: number // id of the default folder for assets field type
+  asset_folder_id?: number // id of the default folder for assets field type
 }
 
 export interface StoryblokMultiAssetFieldType extends StoryblokGenericFieldType {
@@ -209,6 +219,7 @@ export interface StoryblokComponentSchema {
 
 export interface StoryblokComponentSchemaBase {
   name: string;
+  description?: string;
   display_name: string;
   component_group_name?: string;
   is_root: boolean;
