@@ -4,9 +4,9 @@ interface StoryblokKeyValueOptions {
 }
 
 export interface StoryblokGenericFieldType {
-  display_name: string;
-  required: boolean;
-  translatable: boolean;
+  display_name?: string;
+  required?: boolean;
+  translatable?: boolean;
   description?: string;
   pos?: number;
 }
@@ -20,6 +20,8 @@ export interface StoryblokLinkTypeDeliveryApi {
 }
 
 export interface StoryblokAssetTypeDeliveryApi {
+  copyright?: string;
+  source?: string;
   fieldtype: 'asset',
   name: string;
   title: string;
@@ -27,6 +29,7 @@ export interface StoryblokAssetTypeDeliveryApi {
   is_external_url: boolean;
   filename: string;
   focus: string;
+  alt: string;
 }
 
 export interface StoryblokBloksFieldType extends StoryblokGenericFieldType {
@@ -220,7 +223,7 @@ export interface StoryblokComponentSchema {
 export interface StoryblokComponentSchemaBase {
   name: string;
   description?: string;
-  display_name: string;
+  display_name?: string;
   component_group_name?: string;
   is_root: boolean;
   is_nestable: boolean;
