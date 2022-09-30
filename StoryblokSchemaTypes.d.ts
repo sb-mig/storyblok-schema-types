@@ -1,3 +1,26 @@
+export namespace DeliveryApi {
+  interface LinkType {
+    id: string;
+    url: string;
+    linktype: 'url' | 'story';
+    fieldtype: 'multilink';
+    cached_url: string;
+  }
+
+  interface AssetType {
+    copyright?: string;
+    source?: string;
+    fieldtype: 'asset',
+    name: string;
+    title: string;
+    id: number;
+    is_external_url: boolean;
+    filename: string;
+    focus: string;
+    alt: string;
+  }
+}
+
 interface StoryblokKeyValueOptions {
   value: string;
   name: string;
@@ -9,27 +32,6 @@ export interface StoryblokGenericFieldType {
   translatable?: boolean;
   description?: string;
   pos?: number;
-}
-
-export interface StoryblokLinkTypeDeliveryApi {
-  id: string;
-  url: string;
-  linktype: 'url' | 'story';
-  fieldtype: 'multilink';
-  cached_url: string;
-}
-
-export interface StoryblokAssetTypeDeliveryApi {
-  copyright?: string;
-  source?: string;
-  fieldtype: 'asset',
-  name: string;
-  title: string;
-  id: number;
-  is_external_url: boolean;
-  filename: string;
-  focus: string;
-  alt: string;
 }
 
 export interface StoryblokBloksFieldType extends StoryblokGenericFieldType {
@@ -44,7 +46,7 @@ export interface StoryblokBloksFieldType extends StoryblokGenericFieldType {
 
 export interface StoryblokCustomFieldType extends StoryblokGenericFieldType {
   type: 'custom';
-  field_type: 'ef-color-picker' | 'section-padding-plugin';
+  field_type: string;
   options?: StoryblokKeyValueOptions[];
   default_value: string;
 }
@@ -227,7 +229,7 @@ export interface StoryblokComponentSchemaBase {
   component_group_name?: string;
   is_root: boolean;
   is_nestable: boolean;
-  schema?: StoryblokComponentSchema;
+  schema: StoryblokComponentSchema;
   image?: any;
   preview_field?: any;
   preview_tmpl?: any;
