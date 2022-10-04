@@ -48,7 +48,7 @@ export interface StoryblokCustomFieldType extends StoryblokGenericFieldType {
   type: 'custom';
   field_type: string;
   options?: StoryblokKeyValueOptions[];
-  default_value: string;
+  default_value?: any;
 }
 
 export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
