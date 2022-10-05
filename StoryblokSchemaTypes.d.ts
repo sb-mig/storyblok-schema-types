@@ -21,9 +21,9 @@ export namespace DeliveryApi {
   }
 }
 
-interface StoryblokKeyValueOptions {
-  value: string;
-  name: string;
+interface StoryblokKeyValueOption<TOption = string> {
+  value: TOption;
+  name: TOption;
 }
 
 export interface StoryblokGenericFieldType {
@@ -46,9 +46,9 @@ export interface StoryblokBloksFieldType extends StoryblokGenericFieldType {
 
 export interface StoryblokCustomFieldType extends StoryblokGenericFieldType {
   type: 'custom';
-  field_type: string;
-  options?: StoryblokKeyValueOptions[];
-  default_value?: any;
+  field_type: 'ef-color-picker' | 'section-padding-plugin';
+  options?: StoryblokKeyValueOption<Headings>[];
+  default_value: string;
 }
 
 export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
@@ -72,9 +72,9 @@ export interface StoryblokTabSchemaFieldGrouping extends Omit<StoryblokGenericFi
   keys: string[]
 }
 
-export interface StoryblokOptionsFieldType extends StoryblokGenericFieldType {
+export interface StoryblokOptionsFieldType<TOptions = string> extends StoryblokGenericFieldType {
   type: 'options';
-  options?: StoryblokKeyValueOptions[];
+  options?: StoryblokKeyValueOption<TOptions>[];
   min_options?: string;
   max_options?: string;
   source?: 'internal_languages' | 'internal_stories' | 'external' | 'internal' | '';
@@ -87,9 +87,9 @@ export interface StoryblokOptionsFieldType extends StoryblokGenericFieldType {
   use_uuid?: boolean
 }
 
-export interface StoryblokOptionFieldType extends StoryblokGenericFieldType {
+export interface StoryblokOptionFieldType<TOptions = string> extends StoryblokGenericFieldType {
   type: 'option';
-  options?: StoryblokKeyValueOptions[];
+  options: StoryblokKeyValueOption<TOptions>[];
   source?: 'internal_languages' | 'internal_stories' | 'external' | 'internal' | '';
   datasource_slug?: string;
   external_datasource?: string;
@@ -151,12 +151,24 @@ type CommonToolbarList =
   "image" |
   "hrule";
 
+export type Headings =
+  "h1" |
+  "h2" |
+  "h3" |
+  "h4" |
+  "h5" |
+  "h6" |
+  "span" |
+  "p";
+
+
+
 export type RichTextToolbarList =  CommonToolbarList | "paste" | "blok" | "underline" | "strike"
 
 export interface StoryblokRichTextType extends StoryblokGenericFieldType {
   type: 'richtext';
   max_length?: number;
-  style_options?: StoryblokKeyValueOptions[];
+  style_options?: StoryblokKeyValueOption[];
   customize_toolbar?: boolean;
   toolbar?: RichTextToolbarList[];
   restrict_type?: "groups" | "";
@@ -201,7 +213,7 @@ export interface StoryblokDatetimeFieldType extends StoryblokGenericFieldType {
   default_value?: string
 }
 
-export interface StoryblokComponentSchema {
+export interface StoryblokComponentSchema { // this is all
   [field: string]:
     StoryblokTextFieldType |
     StoryblokBooleanFieldType |
@@ -222,14 +234,14 @@ export interface StoryblokComponentSchema {
     StoryblokTextareaFieldType;
 }
 
-export interface StoryblokComponentSchemaBase {
+export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema> {
   name: string;
   description?: string;
   display_name?: string;
   component_group_name?: string;
   is_root: boolean;
   is_nestable: boolean;
-  schema: StoryblokComponentSchema;
+  schema: TSchema;
   image?: any;
   preview_field?: any;
   preview_tmpl?: any;
