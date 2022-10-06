@@ -48,7 +48,7 @@ export interface StoryblokCustomFieldType extends StoryblokGenericFieldType {
   type: 'custom';
   field_type: 'ef-color-picker' | 'section-padding-plugin';
   options?: StoryblokKeyValueOption<Headings>[];
-  default_value: string;
+  default_value?: string;
 }
 
 export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
@@ -82,7 +82,7 @@ export interface StoryblokOptionsFieldType<TOptions = string> extends StoryblokG
   external_datasource?: string;
   folder_slug?: string;
   filter_content_type?: string[];
-  default_value?: string;
+  default_value?: StoryblokKeyValueOption<TOptions>;
   exclude_empty_option?: boolean;
   use_uuid?: boolean
 }
@@ -95,7 +95,7 @@ export interface StoryblokOptionFieldType<TOptions = string> extends StoryblokGe
   external_datasource?: string;
   folder_slug?: string;
   filter_content_type?: string[];
-  default_value?: string;
+  default_value?: StoryblokKeyValueOption<TOptions>;
   exclude_empty_option?: boolean;
   use_uuid?: boolean
 }
