@@ -34,13 +34,13 @@ export interface StoryblokGenericFieldType {
   pos?: number;
 }
 
-export interface StoryblokBloksFieldType extends StoryblokGenericFieldType {
+export interface StoryblokBloksFieldType<TComponents = string[]> extends StoryblokGenericFieldType {
   type: 'bloks';
   default_value?: string;
   maximum?: number;
   restrict_type?: 'groups' | ''; // if we restrict components, than its '' ...
   restrict_components? : boolean;
-  component_whitelist?: string[]; // component names
+  component_whitelist?: TComponents; // component names
   component_group_whitelist?: string[]; // group uuids
 }
 
