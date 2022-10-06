@@ -34,7 +34,7 @@ export interface StoryblokGenericFieldType {
   pos?: number;
 }
 
-export interface StoryblokBloksFieldType<TComponents = string[]> extends StoryblokGenericFieldType {
+export interface StoryblokBloksFieldType<TComponents = string> extends StoryblokGenericFieldType {
   type: 'bloks';
   default_value?: string;
   maximum?: number;
