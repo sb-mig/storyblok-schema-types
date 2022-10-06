@@ -95,7 +95,7 @@ export interface StoryblokOptionFieldType<TOptions = string> extends StoryblokGe
   external_datasource?: string;
   folder_slug?: string;
   filter_content_type?: string[];
-  default_value?: StoryblokKeyValueOption<TOptions>;
+  default_value?: StoryblokKeyValueOption<TOptions> | string;
   exclude_empty_option?: boolean;
   use_uuid?: boolean
 }
