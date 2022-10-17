@@ -46,7 +46,7 @@ export interface StoryblokBloksFieldType<TComponents = string> extends Storyblok
 
 export interface StoryblokCustomFieldType extends StoryblokGenericFieldType {
   type: 'custom';
-  field_type: 'ef-color-picker' | 'section-padding-plugin';
+  field_type: string;
   options?: StoryblokKeyValueOption<Headings>[];
   default_value?: string;
 }
