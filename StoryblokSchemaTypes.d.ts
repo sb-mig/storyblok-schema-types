@@ -21,9 +21,9 @@ export namespace DeliveryApi {
   }
 }
 
-interface StoryblokKeyValueOption<TOption = string> {
-  value: TOption;
-  name: TOption;
+interface StoryblokKeyValueOption<TOptionsName = string, TOptionsValue = string> {
+  name: TOptionsName;
+  value: TOptionsValue;
 }
 
 export interface StoryblokGenericFieldType {
@@ -44,10 +44,10 @@ export interface StoryblokBloksFieldType<TComponents = string> extends Storyblok
   component_group_whitelist?: string[]; // group uuids
 }
 
-export interface StoryblokCustomFieldType extends StoryblokGenericFieldType {
+export interface StoryblokCustomFieldType<TOptionsName = string, TOptionsValue = string> extends StoryblokGenericFieldType {
   type: 'custom';
   field_type: string;
-  options?: StoryblokKeyValueOption<Headings>[];
+  options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   default_value?: string;
 }
 
@@ -72,9 +72,9 @@ export interface StoryblokTabSchemaFieldGrouping extends Omit<StoryblokGenericFi
   keys: string[]
 }
 
-export interface StoryblokOptionsFieldType<TOptions = string> extends StoryblokGenericFieldType {
+export interface StoryblokOptionsFieldType<TOptionsName = string, TOptionsValue = string> extends StoryblokGenericFieldType {
   type: 'options';
-  options?: StoryblokKeyValueOption<TOptions>[];
+  options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   min_options?: string;
   max_options?: string;
   source?: 'internal_languages' | 'internal_stories' | 'external' | 'internal' | '';
@@ -82,20 +82,20 @@ export interface StoryblokOptionsFieldType<TOptions = string> extends StoryblokG
   external_datasource?: string;
   folder_slug?: string;
   filter_content_type?: string[];
-  default_value?: StoryblokKeyValueOption<TOptions>;
+  default_value?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>;
   exclude_empty_option?: boolean;
   use_uuid?: boolean
 }
 
-export interface StoryblokOptionFieldType<TOptions = string> extends StoryblokGenericFieldType {
+export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue = string> extends StoryblokGenericFieldType {
   type: 'option';
-  options: StoryblokKeyValueOption<TOptions>[];
+  options: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   source?: 'internal_languages' | 'internal_stories' | 'external' | 'internal' | '';
   datasource_slug?: string;
   external_datasource?: string;
   folder_slug?: string;
   filter_content_type?: string[];
-  default_value?: StoryblokKeyValueOption<TOptions> | string;
+  default_value?: StoryblokKeyValueOption<TOptionsName, TOptionsValue> | string;
   exclude_empty_option?: boolean;
   use_uuid?: boolean
 }
@@ -133,33 +133,33 @@ export interface StoryblokTextareaFieldType extends StoryblokGenericFieldType {
   default_value?: string;
 }
 type CommonToolbarList =
-  "h1" |
-  "h2" |
-  "h3" |
-  "h4" |
-  "h5" |
-  "h6" |
-  "bold" |
-  "italic" |
-  "inlinecode" |
-  "code" |
-  "paragraph" |
-  "list" |
-  "quote" |
-  "olist" |
-  "link" |
-  "image" |
-  "hrule";
+    "h1" |
+    "h2" |
+    "h3" |
+    "h4" |
+    "h5" |
+    "h6" |
+    "bold" |
+    "italic" |
+    "inlinecode" |
+    "code" |
+    "paragraph" |
+    "list" |
+    "quote" |
+    "olist" |
+    "link" |
+    "image" |
+    "hrule";
 
 export type Headings =
-  "h1" |
-  "h2" |
-  "h3" |
-  "h4" |
-  "h5" |
-  "h6" |
-  "span" |
-  "p";
+    "h1" |
+    "h2" |
+    "h3" |
+    "h4" |
+    "h5" |
+    "h6" |
+    "span" |
+    "p";
 
 
 
@@ -215,23 +215,23 @@ export interface StoryblokDatetimeFieldType extends StoryblokGenericFieldType {
 
 export interface StoryblokComponentSchema { // this is all
   [field: string]:
-    StoryblokTextFieldType |
-    StoryblokBooleanFieldType |
-    StoryblokBloksFieldType |
-    StoryblokMarkdownFieldType |
-    StoryblokLinkFieldType |
-    StoryblokCustomFieldType |
-    StoryblokOptionsFieldType |
-    StoryblokSectionSchemaFieldGrouping |
-    StoryblokTabSchemaFieldGrouping |
-    StoryblokTableFieldType |
-    StoryblokDatetimeFieldType |
-    StoryblokOptionFieldType |
-    StoryblokMultiAssetFieldType |
-    StoryblokAssetFieldType |
-    StoryblokNumberFieldType |
-    StoryblokRichTextType |
-    StoryblokTextareaFieldType;
+      StoryblokTextFieldType |
+      StoryblokBooleanFieldType |
+      StoryblokBloksFieldType |
+      StoryblokMarkdownFieldType |
+      StoryblokLinkFieldType |
+      StoryblokCustomFieldType |
+      StoryblokOptionsFieldType |
+      StoryblokSectionSchemaFieldGrouping |
+      StoryblokTabSchemaFieldGrouping |
+      StoryblokTableFieldType |
+      StoryblokDatetimeFieldType |
+      StoryblokOptionFieldType |
+      StoryblokMultiAssetFieldType |
+      StoryblokAssetFieldType |
+      StoryblokNumberFieldType |
+      StoryblokRichTextType |
+      StoryblokTextareaFieldType;
 }
 
 export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema> {
