@@ -1,4 +1,4 @@
-export namespace DeliveryApi {
+;export namespace DeliveryApi {
   interface LinkType {
     id: string;
     url: string;
@@ -154,8 +154,7 @@ type CommonToolbarList =
     "quote" |
     "olist" |
     "link" |
-    "image" |
-    "hrule";
+    "image"
 
 export type Headings =
     "h1" |
