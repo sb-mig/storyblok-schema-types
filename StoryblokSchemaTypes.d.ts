@@ -1,4 +1,4 @@
-;export namespace DeliveryApi {
+export namespace DeliveryApi {
   interface LinkType {
     id: string;
     url: string;
