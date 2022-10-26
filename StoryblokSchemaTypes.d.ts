@@ -44,12 +44,12 @@ export interface StoryblokBloksFieldType<TComponents = string> extends Storyblok
   component_group_whitelist?: string[]; // group uuids
 }
 
-export interface StoryblokCustomFieldType<TOptionsName = string, TOptionsValue = string>
+export interface StoryblokCustomFieldType<TOptionsName = string, TOptionsValue = string, TReturnValue = any>
     extends StoryblokGenericFieldType, StoryblokOption<TOptionsName, TOptionsValue> {
   type: 'custom';
   field_type: string;
   options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
-  default_value?: string;
+  default_value?: TReturnValue;
   source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
   datasource_slug?: string; // or some custom Union of known datasources from the space
   folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
@@ -96,7 +96,6 @@ export interface StoryblokOption<TOptionsName = string, TOptionsValue = string> 
   folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
   filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
   external_datasource?: string // url to external json, example: https://ef.design/datasource.json
-  default_value?: StoryblokKeyValueOption<TOptionsName, TOptionsValue> | string;
 }
 
 export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue = string>
