@@ -104,6 +104,7 @@ export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue =
   options: StoryblokOption<TOptionsName, TOptionsValue>['options']
   exclude_empty_option?: boolean;
   use_uuid?: boolean;
+  default_value?: StoryblokOption<TOptionsName, TOptionsValue>
 }
 
 export type FileTypes = 'images' | 'videos' | 'audios' | 'texts'
