@@ -114,3 +114,21 @@ export interface ReturnTypeTable {
         }[];
     };
 }
+
+export interface AllStoryblokFieldsReturnTypes {
+    multilink: ReturnTypeMultilink;
+    number: ReturnTypeNumber;
+    datetime: ReturnTypeDatetime;
+    boolean: ReturnTypeBoolean;
+    text: ReturnTypeText;
+    textarea: ReturnTypeTextarea;
+    option: ReturnTypeOption;
+    options: ReturnTypeOptions;
+    asset: ReturnTypeAsset;
+    multiasset: ReturnTypeMultiasset;
+    bloks: ReturnTypeBloks;
+    custom: ReturnTypeCustom;
+    markdown: ReturnTypeMarkdown;
+    richtext: ReturnTypeRichText;
+    table: ReturnTypeTable;
+}

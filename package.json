@@ -10,15 +10,22 @@
     },
     "./StoryblokSchemaTypes": {
       "types": "./StoryblokSchemaTypes.d.ts"
+    },
+    "./TypeHelpers": {
+      "types": "./TypeHelpers.d.ts"
     }
   },
   "files": [
     "StoryblokSchemaTypes.d.ts",
-    "StoryblokReturnTypes.d.ts"
+    "StoryblokReturnTypes.d.ts",
+    "TypeHelpers.d.ts"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Marcin Krawczyk <marckraw@icloud.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@storyblok/react": "^1.3.3"
+  }
 }
