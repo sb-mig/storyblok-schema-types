@@ -4,6 +4,14 @@
   "description": "",
   "main": "./StoryblokSchemaTypes.d.ts",
   "types": "./StoryblokSchemaTypes.d.ts",
+  "exports": {
+    "./StoryblokReturnTypes": {
+      "types": "./StoryblokReturnTypes.d.ts"
+    },
+    "./StoryblokSchemaTypes": {
+      "types": "./StoryblokSchemaTypes.d.ts"
+    }
+  },
   "files": [
     "StoryblokSchemaTypes.d.ts"
   ],

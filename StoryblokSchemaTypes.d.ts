@@ -1,4 +1,14 @@
 export namespace DeliveryApi {
+  export interface TextType {
+    type: "text",
+    display_name: string,
+    required?: boolean,
+    translatable?: boolean,
+    no_translate?: boolean,
+    description?: string,
+    default_value?: string,
+    max_length?: number
+  }
   interface LinkType {
     id: string;
     url: string;
@@ -20,6 +30,124 @@ export namespace DeliveryApi {
     alt: string;
   }
 }
+
+export interface ReturnTypeMultilink {
+  type: 'multilink';
+  returnType: {
+    id: string;
+    url: string;
+    linktype: 'url' | 'story';
+    cached_url: string;
+  };
+}
+
+export interface ReturnTypeNumber {
+  type: 'number';
+  returnType: string;
+}
+
+export interface ReturnTypeDatetime {
+  type: 'datetime';
+  returnType: string;
+}
+
+export interface ReturnTypeBoolean {
+  type: 'boolean';
+  returnType: boolean;
+}
+
+export interface ReturnTypeText {
+  type: 'text';
+  returnType: string;
+}
+
+export interface ReturnTypeTextarea {
+  type: 'textarea';
+  returnType: string;
+}
+
+export interface ReturnTypeOption {
+  type: 'option';
+  returnType: string;
+}
+
+export interface ReturnTypeOptions {
+  type: 'options';
+  returnType: string;
+}
+
+export interface ReturnTypeAsset {
+  type: 'asset';
+  returnType: {
+    copyright?: string;
+    source?: string;
+    name?: string;
+    title?: string;
+    id?: number;
+    is_external_url?: boolean;
+    filename?: string;
+    focus?: string;
+    alt?: string;
+  };
+}
+
+export interface ReturnTypeMultiasset {
+  type: 'multiasset';
+  returnType: {
+    copyright?: string;
+    source?: string;
+    name?: string;
+    title?: string;
+    id?: number;
+    is_external_url?: boolean;
+    filename?: string;
+    focus?: string;
+    alt?: string;
+  }[];
+}
+
+export interface ReturnTypeBloks {
+  type: 'bloks';
+  returnType: any[];
+}
+
+export interface ReturnTypeCustom {
+  type: 'custom';
+  plugin: 'backpack-fade';
+  returnType: string;
+}
+
+export interface ReturnTypeMarkdown {
+  type: 'markdown';
+  returnType: string;
+}
+
+export interface ReturnTypeRichText {
+  type: 'richtext';
+  returnType: {
+    content: any[];
+    type: 'doc';
+  };
+}
+
+export interface ReturnTypeTable {
+  type: 'table';
+  returnType: {
+    fieldtype: 'table';
+    tbody: {
+      component: '_table_row';
+      body: {
+        component: '_table_col';
+        value: string;
+      }[];
+    }[];
+    thead: {
+      component: '_table_head';
+      value: string;
+    }[];
+  };
+}
+
 
 interface StoryblokKeyValueOption<TOptionsName = string, TOptionsValue = string> {
   name: TOptionsName;
