@@ -44,5 +44,5 @@ export interface StoryblokTableFieldReturnType {
         component: '_table_head';
         value: string;
     }[];
-};
+}
 
