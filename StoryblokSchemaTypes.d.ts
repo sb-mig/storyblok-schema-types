@@ -211,6 +211,7 @@ export interface StoryblokMarkdownFieldType extends StoryblokGenericFieldType {
 
 export interface StoryblokBooleanFieldType extends StoryblokGenericFieldType {
   type: 'boolean';
+  default_value?: boolean;
 }
 
 export interface StoryblokNumberFieldType extends StoryblokGenericFieldType {
