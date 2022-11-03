@@ -1,6 +1,6 @@
 {
   "name": "storyblok-schema-types",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "",
   "main": "./StoryblokSchemaTypes.d.ts",
   "types": "./StoryblokSchemaTypes.d.ts",
