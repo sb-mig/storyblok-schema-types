@@ -81,12 +81,12 @@ export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
 
 export interface StoryblokSectionSchemaFieldGrouping<TFields = string> extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
   type: 'section';
-  keys: TFields extends string ? string : (keyof Omit<TFields, 'settings' | 'advanced'>)[]
+  keys: TFields extends string | null ? string[] : (keyof Omit<TFields, 'settings' | 'advanced'>)[]
 }
 
 export interface StoryblokTabSchemaFieldGrouping<TFields = string> extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
   type: 'tab';
-  keys: TFields extends string ? string : (keyof Omit<TFields, 'settings' | 'advanced'>)[]
+  keys: TFields extends string | null ? string[] : (keyof Omit<TFields, 'settings' | 'advanced'>)[]
 }
 
 export interface StoryblokOptionsFieldType<TOptionsName = string, TOptionsValue = string>
