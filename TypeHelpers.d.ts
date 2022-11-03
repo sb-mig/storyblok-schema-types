@@ -1,5 +1,5 @@
 import type { SbBlokData } from '@storyblok/react';
-import type { AllStoryblokFieldsReturnTypes } from './StoryblokReturnTypes';
+import type { AllStoryblokFieldsReturnTypes } from './GenericStoryblokReturnTypes';
 
 export type GetReturnedType<T extends { type: string; plugin: string }> = {
     [K in keyof AllStoryblokFieldsReturnTypes]: AllStoryblokFieldsReturnTypes[K] extends {
