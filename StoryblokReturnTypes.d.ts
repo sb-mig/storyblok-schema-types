@@ -14,13 +14,14 @@ export type StoryblokOptionsFieldReturnType<TValues = string> = TValues
 export interface StoryblokAssetFieldReturnType {
     copyright?: string;
     source?: string;
-    name?: string;
-    title?: string;
-    id?: number;
-    is_external_url?: boolean;
-    filename?: string;
-    focus?: string;
-    alt?: string;
+    fieldtype: 'asset',
+    name: string;
+    title: string;
+    id: number;
+    is_external_url: boolean;
+    filename: string;
+    focus: string;
+    alt: string;
 }
 export type StoryblokMultiassetFieldReturnType = StoryblokAssetFieldReturnType[]
 export type StoryblokBloksFieldReturnType = any[];
