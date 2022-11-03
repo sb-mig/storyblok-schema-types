@@ -13,7 +13,8 @@
     }
   },
   "files": [
-    "StoryblokSchemaTypes.d.ts"
+    "StoryblokSchemaTypes.d.ts",
+    "StoryblokReturnTypes.d.ts"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
