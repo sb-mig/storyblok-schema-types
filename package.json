@@ -19,6 +19,7 @@
     }
   },
   "files": [
+    "index.d.ts",
     "GenericStoryblokReturnTypes.d.ts",
     "StoryblokSchemaTypes.d.ts",
     "StoryblokReturnTypes.d.ts",
