@@ -51,7 +51,7 @@ export interface StoryblokBloksFieldType<TComponents = string> extends Storyblok
   maximum?: number;
   restrict_type?: 'groups' | ''; // if we restrict components, than its '' ...
   restrict_components? : boolean;
-  component_whitelist?: TComponents[]; // component names
+  component_whitelist?: TComponents[] | string[]; // component names
   component_group_whitelist?: string[]; // group uuids
 }
 
