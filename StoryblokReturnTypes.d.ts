@@ -24,8 +24,8 @@ export interface StoryblokAssetFieldReturnType {
     alt: string;
 }
 export type StoryblokMultiassetFieldReturnType = StoryblokAssetFieldReturnType[]
-export type StoryblokBloksFieldReturnType = any[];
-export type StoryblokCustomFieldReturnType = any
+export type StoryblokBloksFieldReturnType<TBlokItem = any> = TBlokItem[];
+export type StoryblokCustomFieldReturnType<TCustomPluginReturn = any> = TCustomPluginReturn
 export type StoryblokMarkdownFieldReturnType = string
 export interface StoryblokRichTextFieldReturnType {
     content: any[];
