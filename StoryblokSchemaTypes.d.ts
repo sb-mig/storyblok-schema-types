@@ -215,24 +215,15 @@ export interface StoryblokBooleanFieldType<TDefaultValue = boolean> extends Stor
   default_value?: TDefaultValue;
 }
 
-interface BPDefaultValues {
-  s?: {
-    [key: string]: string;
-  };
-  m?: {
-    [key: string]: string;
-  };
-  l?: {
-    [key: string]: string;
-  };
-  xl?: {
-    [key: string]: string;
-  };
-  xxl?: {
-    [key: string]: string;
-  };
+interface BooleanBPDefaultValues {
+  s?: boolean
+  m?: boolean
+  l?: boolean
+  xl?: boolean
+  xxl?: boolean
 }
-export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BPDefaultValues>
+
+export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BooleanBPDefaultValues>
 
 export interface StoryblokNumberFieldType extends StoryblokGenericFieldType {
   type: 'number';
