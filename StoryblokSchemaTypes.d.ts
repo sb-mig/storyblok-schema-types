@@ -109,13 +109,15 @@ export interface StoryblokOption<TOptionsName = string, TOptionsValue = string> 
   external_datasource?: string // url to external json, example: https://ef.design/datasource.json
 }
 
-export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue = string>
+export type StoryblokOptionBPFieldType<TOptionsName = string, TOptionsValue = string> = StoryblokOptionFieldType<TOptionsName, TOptionsValue, BPDefaultValues<TOptionsValue>>
+
+export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue = string, BPDefaultValues = string>
     extends StoryblokGenericFieldType, StoryblokOption<TOptionsName, TOptionsValue> {
   type: 'option';
   options: StoryblokOption<TOptionsName, TOptionsValue>['options']
   exclude_empty_option?: boolean;
   use_uuid?: boolean;
-  default_value?: StoryblokOption<TOptionsName, TOptionsValue> | string
+  default_value?: BPDefaultValues;
 }
 
 export type FileTypes = 'images' | 'videos' | 'audios' | 'texts'
@@ -215,13 +217,15 @@ export interface StoryblokBooleanFieldType<TDefaultValue = boolean> extends Stor
   default_value?: TDefaultValue;
 }
 
-interface BooleanBPDefaultValues {
-  s?: boolean
-  m?: boolean
-  l?: boolean
-  xl?: boolean
-  xxl?: boolean
+interface BPDefaultValues<TDefaultValue = any> {
+  s?: TDefaultValue
+  m?: TDefaultValue
+  l?: TDefaultValue
+  xl?: TDefaultValue
+  xxl?: TDefaultValue
 }
+
+type BooleanBPDefaultValues = BPDefaultValues<boolean>;
 
 export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BooleanBPDefaultValues>
 
