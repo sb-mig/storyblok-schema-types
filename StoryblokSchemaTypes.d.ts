@@ -209,10 +209,30 @@ export interface StoryblokMarkdownFieldType extends StoryblokGenericFieldType {
   default_value?: string
 }
 
-export interface StoryblokBooleanFieldType extends StoryblokGenericFieldType {
+
+export interface StoryblokBooleanFieldType<TDefaultValue = boolean> extends StoryblokGenericFieldType {
   type: 'boolean';
-  default_value?: boolean;
+  default_value?: TDefaultValue;
 }
+
+interface BPDefaultValues {
+  s?: {
+    [key: string]: string;
+  };
+  m?: {
+    [key: string]: string;
+  };
+  l?: {
+    [key: string]: string;
+  };
+  xl?: {
+    [key: string]: string;
+  };
+  xxl?: {
+    [key: string]: string;
+  };
+}
+export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BPDefaultValues>
 
 export interface StoryblokNumberFieldType extends StoryblokGenericFieldType {
   type: 'number';
