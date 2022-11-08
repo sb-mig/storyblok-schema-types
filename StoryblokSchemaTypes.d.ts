@@ -111,13 +111,13 @@ export interface StoryblokOption<TOptionsName = string, TOptionsValue = string> 
 
 export type StoryblokOptionBPFieldType<TOptionsName = string, TOptionsValue = string> = StoryblokOptionFieldType<TOptionsName, TOptionsValue, BPDefaultValues<TOptionsValue>>
 
-export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue = string, BPDefaultValues = string>
+export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue = string, TDefaultValue = string>
     extends StoryblokGenericFieldType, StoryblokOption<TOptionsName, TOptionsValue> {
   type: 'option';
   options: StoryblokOption<TOptionsName, TOptionsValue>['options']
   exclude_empty_option?: boolean;
   use_uuid?: boolean;
-  default_value?: BPDefaultValues;
+  default_value?: TDefaultValue;
 }
 
 export type FileTypes = 'images' | 'videos' | 'audios' | 'texts'
@@ -225,9 +225,7 @@ interface BPDefaultValues<TDefaultValue = any> {
   xxl?: TDefaultValue
 }
 
-type BooleanBPDefaultValues = BPDefaultValues<boolean>;
-
-export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BooleanBPDefaultValues>
+export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BPDefaultValues<boolean>>
 
 export interface StoryblokNumberFieldType extends StoryblokGenericFieldType {
   type: 'number';
