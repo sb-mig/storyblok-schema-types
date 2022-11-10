@@ -68,6 +68,20 @@ export interface StoryblokCustomFieldType<TOptionsName = string, TOptionsValue =
   external_datasource?: string // url to external json, example: https://ef.design/datasource.json
 }
 
+export interface StoryblokCustomFieldTypeV2<TDefaultValue = any, TOptions = StoryblokKeyValueOption<string, string>[]>
+    extends StoryblokGenericFieldType {
+  type: 'custom';
+  field_type: string;
+  options?: TOptions;
+  default_value?: TDefaultValue;
+  source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
+  datasource_slug?: string; // or some custom Union of known datasources from the space
+  folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
+  filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
+  external_datasource?: string // url to external json, example: https://ef.design/datasource.json
+}
+
+
 export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
   type: 'multilink';
   email_link_type?: boolean;
@@ -115,6 +129,14 @@ export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue =
     extends StoryblokGenericFieldType, StoryblokOption<TOptionsName, TOptionsValue> {
   type: 'option';
   options: StoryblokOption<TOptionsName, TOptionsValue>['options']
+  exclude_empty_option?: boolean;
+  use_uuid?: boolean;
+  default_value?: TDefaultValue;
+}
+
+export interface StoryblokOptionFieldTypeV2<TDefaultValue = any, TOptions = StoryblokKeyValueOption<string, string>[]> extends StoryblokGenericFieldType {
+  type: 'option';
+  options: TOptions
   exclude_empty_option?: boolean;
   use_uuid?: boolean;
   default_value?: TDefaultValue;
@@ -227,10 +249,10 @@ interface BPDefaultValues<TDefaultValue = any> {
 
 export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BPDefaultValues<boolean>>
 
-export interface StoryblokNumberFieldType extends StoryblokGenericFieldType {
+export interface StoryblokNumberFieldType<TDefaultValue = number> extends StoryblokGenericFieldType {
   type: 'number';
   no_translate?: boolean;
-  default_value?: number;
+  default_value?: TDefaultValue;
   min_value?: number;
   max_value?: number;
   decimals?: number;
