@@ -29,7 +29,7 @@ export type BackpackCore = {
   };
 };
 
-export type Core = {
+export type Core<T = string> = {
   text: {
     Input: {
       type: 'text';
@@ -47,6 +47,8 @@ export type Core = {
   tab: {
     Input: {
       type: 'tab';
+      display_name?: string;
+      keys: T[]
     };
   };
   number: {
@@ -62,6 +64,17 @@ export type WithBackpack<TNestedSchema extends { Input: any; Output: any }> = {
   Input: {
     type: 'custom';
     field_type: 'backpack-breakpoints';
+    display_name?: string
+    options: {name: keyof TNestedSchema['Input'], value: string}[]
   };
   Output: TNestedSchema['Output'];
 };
+
+
+export type CorePredicates = {
+  tab: {
+    Input: {
+      type: 'tab';
+    };
+  }
+}

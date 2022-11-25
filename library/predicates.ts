@@ -5,3 +5,11 @@ export type BackpackInputOutputPredicate = {
   };
   Output: any;
 };
+
+export type GeneralNestedPredicate = Record<string, {
+  Input: {
+    type: 'custom',
+    field_type: string
+  },
+  Output: any;
+}>
