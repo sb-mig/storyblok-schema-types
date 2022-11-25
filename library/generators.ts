@@ -16,39 +16,39 @@ type _GenerateNestedInput<TFields, TBreakpoints extends string = Breakpoints> =
             };
         }
         : TFields[Field] extends BackpackCore['BackpackSpacing']
-            ? {
-                type: 'custom';
-                field_type: 'backpack-spacing';
-                display_name?: string;
-                default_value: {
-                    [key in TBreakpoints]?: TFields[Field]['Output'];
-                };
-            }
-            : TFields[Field] extends BackpackCore['BackpackPosition']
-                ? {
-                    type: 'custom';
-                    field_type: 'backpack-layout';
-                    display_name?: string;
-                    default_value: {
-                        [key in TBreakpoints]?: TFields[Field]['Output'];
-                    };
+        ? {
+            type: 'custom';
+            field_type: 'backpack-spacing';
+            display_name?: string;
+            default_value: {
+                [key in TBreakpoints]?: TFields[Field]['Output'];
+            };
+        }
+        : TFields[Field] extends BackpackCore['BackpackPosition']
+        ? {
+            type: 'custom';
+            field_type: 'backpack-layout';
+            display_name?: string;
+            default_value: {
+                [key in TBreakpoints]?: TFields[Field]['Output'];
+            };
+        }
+        : TFields[Field] extends BackpackCore['BackpackColorPicker']
+        ? {
+            type: 'custom';
+            field_type: 'backpack-color-picker';
+            display_name?: string;
+            options: [
+                {
+                    name: 'colors';
+                    value: 'colors';
                 }
-                : TFields[Field] extends BackpackCore['BackpackColorPicker']
-                    ? {
-                        type: 'custom';
-                        field_type: 'backpack-color-picker';
-                        display_name?: string;
-                        options: [
-                            {
-                                name: 'colors';
-                                value: 'colors';
-                            }
-                        ];
-                        default_value: {
-                            [key in TBreakpoints]?: TFields[Field]['Output'];
-                        };
-                    }
-                    : never;
+            ];
+            default_value: {
+                [key in TBreakpoints]?: TFields[Field]['Output'];
+            };
+        }
+        : never;
     };
 
 type _GenerateNestedOutput<TFields extends GeneralNestedPredicate, TBreakpoints extends string = Breakpoints> =
@@ -76,27 +76,20 @@ type _GenerateInput<TFields, TBreakpoints extends string = Breakpoints> = {
     [Field in keyof TFields]: TFields[Field] extends BackpackInputOutputPredicate
         ? TFields[Field]['Input']
         : TFields[Field] extends Core['text']
-            ? {
-                type: 'text';
-                display_name?: string;
-                description?: string;
-                required?: boolean;
-                translatable?: boolean;
-                default_value?: TFields[Field]['Output'];
-            }
-            : TFields[Field] extends Core['boolean']
-                ? {
-                    type: 'boolean';
-                    default_value: TFields[Field]['Output'];
-                }
-                : TFields[Field] extends Core['number']
-                    ? {
-                        type: 'number';
-                        default_value: TFields[Field]['Output'];
-                    }
-                    : TFields[Field] extends CorePredicates['tab']
-                        ? TFields[Field]['Input']
-                        : never;
+        ? TFields[Field]['Input'] & {
+            default_value?: TFields[Field]['Output'];
+        }
+        : TFields[Field] extends Core['boolean']
+        ? TFields[Field]['Input'] & {
+            default_value: TFields[Field]['Output'];
+        }
+        : TFields[Field] extends Core['number']
+        ? TFields[Field]['Input'] & {
+            default_value: TFields[Field]['Output'];
+        }
+        : TFields[Field] extends CorePredicates['tab']
+        ? TFields[Field]['Input']
+        : never;
 };
 type _GenerateOutput<TFields, TBreakpoints extends string = Breakpoints> = {
     [Field in keyof TFields]: TFields[Field] extends { Input: any; Output: any }

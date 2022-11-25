@@ -33,7 +33,10 @@ export type Core<T = string> = {
   text: {
     Input: {
       type: 'text';
-      default_value: string;
+      display_name?: string;
+      description?: string;
+      required?: boolean;
+      translatable?: boolean;
     };
     Output: StoryblokTextFieldReturnType;
   };
@@ -54,7 +57,7 @@ export type Core<T = string> = {
   number: {
     Input: {
       type: 'number';
-      default_value: number;
+      default_value: string;
     };
     Output: StoryblokNumberFieldReturnType;
   };
