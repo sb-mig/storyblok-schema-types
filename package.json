@@ -23,7 +23,8 @@
     "GenericStoryblokReturnTypes.d.ts",
     "StoryblokSchemaTypes.d.ts",
     "StoryblokReturnTypes.d.ts",
-    "TypeHelpers.d.ts"
+    "TypeHelpers.d.ts",
+    "library"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
