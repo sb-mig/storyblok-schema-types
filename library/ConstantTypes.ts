@@ -1,22 +1,52 @@
 import { Spacing, Axis } from './types';
 import {
+  StoryblokAssetFieldReturnType,
+  StoryblokBloksFieldReturnType,
   StoryblokBooleanFieldReturnType,
+  StoryblokCustomFieldReturnType,
+  StoryblokDatetimeFieldReturnType,
+  StoryblokMarkdownFieldReturnType,
+  StoryblokMultiassetFieldReturnType,
+  StoryblokMultilinkFieldReturnType,
   StoryblokNumberFieldReturnType,
+  StoryblokOptionFieldReturnType,
+  StoryblokOptionsFieldReturnType,
+  StoryblokRichTextFieldReturnType,
+  StoryblokTableFieldReturnType,
+  StoryblokTextareaFieldReturnType,
   StoryblokTextFieldReturnType,
 } from '../StoryblokReturnTypes';
+import {
+  StoryblokAssetFieldType,
+  StoryblokBloksFieldType,
+  StoryblokBooleanFieldType,
+  StoryblokCustomFieldType, StoryblokDatetimeFieldType,
+  StoryblokLinkFieldType, StoryblokMarkdownFieldType,
+  StoryblokMultiAssetFieldType,
+  StoryblokNumberFieldType,
+  StoryblokOptionFieldType,
+  StoryblokOptionsFieldType, StoryblokRichTextType,
+  StoryblokSectionSchemaFieldGrouping, StoryblokTableFieldType,
+  StoryblokTabSchemaFieldGrouping,
+  StoryblokTextareaFieldType,
+  StoryblokTextFieldType
+} from "../StoryblokSchemaTypes";
 
 export type BackpackCore = {
   BackpackSpacing: {
     Input: {
       type: 'custom';
       field_type: 'backpack-spacing';
+      display_name?: string;
+      options?: any[];
     };
     Output: Spacing;
   };
   BackpackPosition: {
     Input: {
       type: 'custom';
-      field_type: 'backpack-position';
+      field_type: 'backpack-layout';
+      display_name?: string;
     };
     Output: Axis;
   };
@@ -24,6 +54,13 @@ export type BackpackCore = {
     Input: {
       type: 'custom';
       field_type: 'backpack-color-picker';
+      display_name?: string;
+      options: [
+        {
+          name: 'colors';
+          value: 'colors';
+        }
+      ];
     };
     Output: string;
   };
@@ -31,35 +68,70 @@ export type BackpackCore = {
 
 export type Core<T = string> = {
   text: {
-    Input: {
-      type: 'text';
-      display_name?: string;
-      description?: string;
-      required?: boolean;
-      translatable?: boolean;
-    };
-    Output: StoryblokTextFieldReturnType;
+    Input: StoryblokTextFieldType
+    Output: StoryblokTextFieldReturnType
+  };
+  textarea: {
+    Input: StoryblokTextareaFieldType
+    Output: StoryblokTextareaFieldReturnType
   };
   boolean: {
-    Input: {
-      type: 'boolean';
-      default_value: boolean;
-    };
+    Input: StoryblokBooleanFieldType
     Output: StoryblokBooleanFieldReturnType;
   };
-  tab: {
-    Input: {
-      type: 'tab';
-      display_name?: string;
-      keys: T[]
-    };
-  };
   number: {
-    Input: {
-      type: 'number';
-      default_value: string;
-    };
+    Input: StoryblokNumberFieldType;
     Output: StoryblokNumberFieldReturnType;
+  };
+  option: {
+    Input: StoryblokOptionFieldType;
+    Output: StoryblokOptionFieldReturnType;
+  };
+  options: {
+    Input: StoryblokOptionsFieldType;
+    Output: StoryblokOptionsFieldReturnType;
+  };
+  multilink: {
+    Input: StoryblokLinkFieldType;
+    Output: StoryblokMultilinkFieldReturnType;
+  };
+  asset: {
+    Input: StoryblokAssetFieldType;
+    Output: StoryblokAssetFieldReturnType;
+  };
+  multiasset: {
+    Input: StoryblokMultiAssetFieldType;
+    Output: StoryblokMultiassetFieldReturnType;
+  };
+  bloks: {
+    Input: StoryblokBloksFieldType
+    Output: StoryblokBloksFieldReturnType
+  };
+  custom: {
+    Input: StoryblokCustomFieldType
+    Output: StoryblokCustomFieldReturnType
+  };
+  richtext: {
+    Input: StoryblokRichTextType
+    Output: StoryblokRichTextFieldReturnType
+  };
+  markdown: {
+    Input: StoryblokMarkdownFieldType
+    Output: StoryblokMarkdownFieldReturnType
+  };
+  table: {
+    Input: StoryblokTableFieldType
+    Output: StoryblokTableFieldReturnType
+  };
+  datetime: {
+    Input: StoryblokDatetimeFieldType
+    Output: StoryblokDatetimeFieldReturnType
+  };
+  tab: {
+    Input: StoryblokTabSchemaFieldGrouping;
+  };
+  section: {
+    Input: StoryblokSectionSchemaFieldGrouping<T>;
   };
 };
 
@@ -72,12 +144,3 @@ export type WithBackpack<TNestedSchema extends { Input: any; Output: any }> = {
   };
   Output: TNestedSchema['Output'];
 };
-
-
-export type CorePredicates = {
-  tab: {
-    Input: {
-      type: 'tab';
-    };
-  }
-}

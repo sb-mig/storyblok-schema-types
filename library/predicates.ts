@@ -1,4 +1,4 @@
-export type BackpackInputOutputPredicate = {
+export type BackpackBreakpointsPredicate = {
   Input: {
     type: 'custom';
     field_type: 'backpack-breakpoints';
@@ -22,8 +22,10 @@ export type GeneralSchemaPredicate = {
   Output: any;
 }
 
-export type TabSchemaPredicate = {
-  Input: {
-    type: 'tab',
-  },
+export type CorePredicates = {
+  tab: {
+    Input: {
+      type: 'tab';
+    };
+  }
 }

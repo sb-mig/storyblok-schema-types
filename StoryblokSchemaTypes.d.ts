@@ -93,14 +93,14 @@ export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
   link_scope?: string;
 }
 
-export interface StoryblokSectionSchemaFieldGrouping<TFields = string> extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
+export interface StoryblokSectionSchemaFieldGrouping<TKeys = string> extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
   type: 'section';
-  keys: TFields extends string | null ? string[] : (keyof Omit<TFields, 'settings' | 'advanced'>)[]
+  keys: TKeys[]
 }
 
-export interface StoryblokTabSchemaFieldGrouping<TFields = string> extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
+export interface StoryblokTabSchemaFieldGrouping<TKeys = string> extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
   type: 'tab';
-  keys: TFields extends string | null ? string[] : (keyof Omit<TFields, 'settings' | 'advanced'>)[]
+  keys: TKeys[]
 }
 
 export interface StoryblokOptionsFieldType<TOptionsName = string, TOptionsValue = string>
@@ -249,7 +249,7 @@ interface BPDefaultValues<TDefaultValue = any> {
 
 export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BPDefaultValues<boolean>>
 
-export interface StoryblokNumberFieldType<TDefaultValue = number> extends StoryblokGenericFieldType {
+export interface StoryblokNumberFieldType<TDefaultValue = string> extends StoryblokGenericFieldType {
   type: 'number';
   no_translate?: boolean;
   default_value?: TDefaultValue;
