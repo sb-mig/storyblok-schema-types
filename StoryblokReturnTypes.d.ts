@@ -10,7 +10,7 @@ export type StoryblokBooleanFieldReturnType = boolean
 export type StoryblokTextFieldReturnType = string
 export type StoryblokTextareaFieldReturnType = string
 export type StoryblokOptionFieldReturnType<TValues = string> = TValues
-export type StoryblokOptionsFieldReturnType<TValues = string> = TValues
+export type StoryblokOptionsFieldReturnType<TValues = string> = TValues[]
 export interface StoryblokAssetFieldReturnType {
     copyright?: string;
     source?: string;
