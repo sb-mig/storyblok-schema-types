@@ -13,3 +13,17 @@ export type GeneralNestedPredicate = Record<string, {
   },
   Output: any;
 }>
+
+
+export type GeneralSchemaPredicate = {
+  Input: {
+    type: string,
+  },
+  Output: any;
+}
+
+export type TabSchemaPredicate = {
+  Input: {
+    type: 'tab',
+  },
+}

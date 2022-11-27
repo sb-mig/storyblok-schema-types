@@ -1,7 +1,8 @@
-import { BackpackInputOutputPredicate, GeneralNestedPredicate } from './predicates';
+import {BackpackInputOutputPredicate, GeneralNestedPredicate, GeneralSchemaPredicate} from './predicates';
 import { BackpackCore, Core, CorePredicates } from './ConstantTypes';
 import { Breakpoints } from './types';
 import { SbBlokData } from '@storyblok/react';
+import {RemoveNever} from "./utils";
 
 type _GenerateNestedInput<TFields, TBreakpoints extends string = Breakpoints> =
     {
@@ -60,7 +61,8 @@ type _GenerateNestedOutput<TFields extends GeneralNestedPredicate, TBreakpoints 
         fields: {
             [Field in keyof TFields]: {
                 field_type: TFields[Field]['Input']['field_type']
-                data: {
+                type: TFields[Field]['Input']['type']
+                values: {
                     [key in TBreakpoints]?: TFields[Field] extends {
                             Input: any;
                             Output: any;
@@ -91,11 +93,11 @@ type _GenerateInput<TFields, TBreakpoints extends string = Breakpoints> = {
         ? TFields[Field]['Input']
         : never;
 };
-type _GenerateOutput<TFields, TBreakpoints extends string = Breakpoints> = {
-    [Field in keyof TFields]: TFields[Field] extends { Input: any; Output: any }
+type _GenerateOutput<TFields, TBreakpoints extends string = Breakpoints> = RemoveNever<{
+    [Field in keyof TFields]: TFields[Field] extends GeneralSchemaPredicate
         ? TFields[Field]['Output']
         : never;
-};
+}>;
 
 export type GenerateNestedSchema<TFields extends GeneralNestedPredicate> = {
     Input: _GenerateNestedInput<TFields>;
