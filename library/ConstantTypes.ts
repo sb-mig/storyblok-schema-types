@@ -64,6 +64,18 @@ export type BackpackCore = {
     };
     Output: string;
   };
+  BackpackNumber: {
+    Input: Omit<Core['number']['Input'], 'default_value'>;
+    Output: Core['number']['Output'];
+  },
+  BackpackOption: {
+    Input: Omit<Core['option']['Input'], 'default_value'>;
+    Output: Core['option']['Output'];
+  }
+  BackpackBoolean: {
+    Input: Omit<Core['boolean']['Input'], 'default_value'>;
+    Output: Core['boolean']['Output'];
+  }
 };
 
 export type Core<T = string> = {

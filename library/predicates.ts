@@ -8,8 +8,8 @@ export type BackpackBreakpointsPredicate = {
 
 export type GeneralNestedPredicate = Record<string, {
   Input: {
-    type: 'custom',
-    field_type: string
+    type: string,
+    field_type?: string
   },
   Output: any;
 }>
