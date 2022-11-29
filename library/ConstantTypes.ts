@@ -62,7 +62,10 @@ export type BackpackCore = {
         }
       ];
     };
-    Output: string;
+    Output: {
+      name: string,
+      value: string
+    };
   };
   BackpackNumber: {
     Input: Omit<Core['number']['Input'], 'default_value'>;
