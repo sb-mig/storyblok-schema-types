@@ -39,12 +39,7 @@ export type BackpackCore = {
       field_type: 'backpack-spacing';
       display_name?: string;
       options?: any[];
-      default_value?: {
-        color: {
-          name: string,
-          value: string
-        }
-      }
+      default_value?: BackpackCore['BackpackPosition']['Output'];
     };
     Output: Spacing;
   };
@@ -53,6 +48,7 @@ export type BackpackCore = {
       type: 'custom';
       field_type: 'backpack-layout';
       display_name?: string;
+      default_value?: BackpackCore['BackpackPosition']['Output'];
     };
     Output: Axis;
   };
@@ -67,6 +63,7 @@ export type BackpackCore = {
           value: 'colors';
         }
       ];
+      default_value?: BackpackCore['BackpackColorPicker']['Output'];
     };
     Output: {
       color: {
