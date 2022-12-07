@@ -24,7 +24,7 @@ type _GenerateNestedInput<TFields, TBreakpoints extends string = Breakpoints> =
             };
         }
         : TFields[Field] extends BackpackCore['BackpackColorPicker']
-        ? BackpackCore['BackpackColorPicker']['Input'] & {
+        ? Omit<BackpackCore['BackpackColorPicker']['Input'], 'default_value'> & {
             default_value: {
                 [key in TBreakpoints]?: TFields[Field]['Output'];
             };

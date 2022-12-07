@@ -39,7 +39,7 @@ export type BackpackCore = {
       field_type: 'backpack-spacing';
       display_name?: string;
       options?: any[];
-      default_value?: BackpackCore['BackpackPosition']['Output'];
+      default_value?: BackpackCore['BackpackSpacing']['Output'];
     };
     Output: Spacing;
   };
