@@ -39,6 +39,12 @@ export type BackpackCore = {
       field_type: 'backpack-spacing';
       display_name?: string;
       options?: any[];
+      default_value?: {
+        color: {
+          name: string,
+          value: string
+        }
+      }
     };
     Output: Spacing;
   };
