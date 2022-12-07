@@ -1,6 +1,6 @@
 {
   "name": "storyblok-schema-types",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "",
   "main": "./index.d.ts",
   "types": "./index.d.ts",
