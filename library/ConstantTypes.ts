@@ -81,7 +81,7 @@ export type BackpackCore = {
   }
 };
 
-export type Core<T = string> = {
+export type Core<T = string, U = string> = {
   text: {
     Input: StoryblokTextFieldType
     Output: StoryblokTextFieldReturnType
@@ -99,8 +99,8 @@ export type Core<T = string> = {
     Output: StoryblokNumberFieldReturnType;
   };
   option: {
-    Input: StoryblokOptionFieldType;
-    Output: StoryblokOptionFieldReturnType;
+    Input: StoryblokOptionFieldType<T, U, U>;
+    Output: StoryblokOptionFieldReturnType<U>;
   };
   options: {
     Input: StoryblokOptionsFieldType;
