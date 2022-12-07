@@ -103,15 +103,20 @@ export interface StoryblokTabSchemaFieldGrouping<TKeys = string> extends Omit<St
   keys: TKeys[]
 }
 
-export interface StoryblokOptionsFieldType<TOptionsName = string, TOptionsValue = string>
-    extends StoryblokGenericFieldType, StoryblokOption<TOptionsName, TOptionsValue> {
+export interface StoryblokOptionsFieldType<TOptionsName = string, TOptionsValue = string, TDefaultValue = string>
+    extends StoryblokGenericFieldType {
   type: 'options';
-  options?: StoryblokOption<TOptionsName, TOptionsValue>['options'];
+  options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   min_options?: string;
   max_options?: string;
-  default_value?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>;
+  default_value?: TDefaultValue[];
   exclude_empty_option?: boolean;
   use_uuid?: boolean
+  source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
+  datasource_slug?: string; // or some custom Union of known datasources from the space
+  folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
+  filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
+  external_datasource?: string // url to external json, example: https://ef.design/datasource.json
 }
 
 export interface StoryblokOption<TOptionsName = string, TOptionsValue = string> {

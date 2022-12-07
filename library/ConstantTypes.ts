@@ -103,8 +103,8 @@ export type Core<T = string, U = string> = {
     Output: StoryblokOptionFieldReturnType<U>;
   };
   options: {
-    Input: StoryblokOptionsFieldType;
-    Output: StoryblokOptionsFieldReturnType;
+    Input: StoryblokOptionsFieldType<T, U, U>;
+    Output: StoryblokOptionsFieldReturnType<U>;
   };
   multilink: {
     Input: StoryblokLinkFieldType;
