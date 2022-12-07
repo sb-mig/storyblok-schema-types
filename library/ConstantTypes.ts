@@ -63,8 +63,10 @@ export type BackpackCore = {
       ];
     };
     Output: {
-      name: string,
-      value: string
+      color: {
+        name: string,
+        value: string
+      }
     };
   };
   BackpackNumber: {

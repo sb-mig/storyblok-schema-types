@@ -130,7 +130,8 @@ export interface StoryblokOption<TOptionsName = string, TOptionsValue = string> 
 
 export type StoryblokOptionBPFieldType<TOptionsName = string, TOptionsValue = string> = StoryblokOptionFieldType<TOptionsName, TOptionsValue, BPDefaultValues<TOptionsValue>>
 
-export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue = string, TDefaultValue = string> extends StoryblokGenericFieldType {
+export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue = string, TDefaultValue = string>
+    extends StoryblokGenericFieldType {
   type: 'option';
   options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   exclude_empty_option?: boolean;
