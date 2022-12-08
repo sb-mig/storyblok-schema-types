@@ -347,8 +347,14 @@ export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema
   * any string to jpg/png available publicly on the internet
   * */
   image?: string;
+  /*
+  * stringified html / squirell template "<div>{{test_text}}</div>\n<div>whatever</div>",
+  *
+  * https://squirrelly.js.org/
+  * https://www.storyblok.com/docs/schema-configuration#preview-template
+  * */
   preview_field?: any;
-  preview_tmpl?: string; // stringified html / squirell template "<div>{{test_text}}</div>\n<div>whatever</div>",
+  preview_tmpl?: string;
   all_presets?: any[];
   preset_id?: any;
   real_name?: string;
