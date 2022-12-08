@@ -275,7 +275,7 @@ export interface StoryblokDatetimeFieldType extends StoryblokGenericFieldType {
   default_value?: string
 }
 
-export interface StoryblokComponentSchema { // this is all
+export interface StoryblokComponentSchema {
   [field: string]:
       StoryblokTextFieldType |
       StoryblokBooleanFieldType |

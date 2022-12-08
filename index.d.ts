@@ -1,6 +1,5 @@
 export * from './StoryblokSchemaTypes'
 export * from './StoryblokReturnTypes'
 export * from './GenericStoryblokReturnTypes'
-export * from './TypeHelpers'
 export { GenerateNestedSchema, GenerateSchema } from './library/generators'
 export { WithBackpack, Core, BackpackCore } from './library/ConstantTypes'
