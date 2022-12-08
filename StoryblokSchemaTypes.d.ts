@@ -298,7 +298,6 @@ export interface StoryblokComponentSchema { // this is all
 
 export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema> {
   name: string;
-  description?: string;
   display_name?: string;
   component_group_name?: string;
   is_root: boolean;
