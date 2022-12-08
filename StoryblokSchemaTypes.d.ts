@@ -296,6 +296,46 @@ export interface StoryblokComponentSchema { // this is all
       StoryblokTextareaFieldType;
 }
 
+export type ComponentPreviewIcon = "block-@" |
+  "block-1-2block" |
+  "block-add" |
+  "block-arrow-pointer" |
+  "block-block" |
+  "block-buildin" |
+  "block-center-m" |
+  "block-comment" |
+  "block-doc" |
+  "block-dollar-sign" |
+  "block-email" |
+  "block-image" |
+  "block-keyboard" |
+  "block-locked" |
+  "block-map-pin" |
+  "block-mobile" |
+  "block-monitor" |
+  "block-paycard" |
+  "block-resize-fc" |
+  "block-cart" |
+  "block-share" |
+  "block-shield-2" |
+  "block-shield" |
+  "block-sticker" |
+  "block-suitcase" |
+  "block-table-2" |
+  "block-table" |
+  "block-tag" |
+  "block-text-c" |
+  "block-text-img-c" |
+  "block-text-img-l" |
+  "block-text-img-r-l" |
+  "block-text-img-r" |
+  "block-text-img-t-l" |
+  "block-text-img-t-r" |
+  "block-text-l" |
+  "block-text-r" |
+  "block-unlocked" |
+  "block-wallet"
+
 export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema> {
   name: string;
   display_name?: string;
@@ -303,13 +343,19 @@ export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema
   is_root: boolean;
   is_nestable: boolean;
   schema: TSchema;
-  image?: any;
+  /*
+  * any string to jpg/png available publicly on the internet
+  * */
+  image?: string;
   preview_field?: any;
-  preview_tmpl?: any;
+  preview_tmpl?: string; // stringified html / squirell template "<div>{{test_text}}</div>\n<div>whatever</div>",
   all_presets?: any[];
   preset_id?: any;
   real_name?: string;
   component_group_uuid?: any;
-  color?: any;
-  icon?: any
+  /*
+  * any color string
+  * */
+  color?: string;
+  icon?: ComponentPreviewIcon
 }
