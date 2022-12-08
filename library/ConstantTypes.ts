@@ -124,7 +124,7 @@ export type Core<T = string, U = string> = {
     Output: StoryblokMultiassetFieldReturnType;
   };
   bloks: {
-    Input: StoryblokBloksFieldType
+    Input: StoryblokBloksFieldType<T>
     Output: StoryblokBloksFieldReturnType
   };
   custom: {
