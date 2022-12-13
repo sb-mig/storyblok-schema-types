@@ -32,7 +32,7 @@ import {
   StoryblokTextFieldType
 } from "../StoryblokSchemaTypes";
 
-export type BackpackCore = {
+export type BackpackCore<T = string, U = string> = {
   BackpackSpacing: {
     Input: {
       type: 'custom';
@@ -77,8 +77,8 @@ export type BackpackCore = {
     Output: Core['number']['Output'];
   },
   BackpackOption: {
-    Input: Omit<Core['option']['Input'], 'default_value'>;
-    Output: Core['option']['Output'];
+    Input: Omit<Core<T, U>['option']['Input'], 'default_value'>;
+    Output: Core<T, U>['option']['Output'];
   }
   BackpackBoolean: {
     Input: Omit<Core['boolean']['Input'], 'default_value'>;
