@@ -66,7 +66,7 @@ export type BackpackCore<T = string, U = string> = {
       default_value?: BackpackCore['BackpackColorPicker']['Output'];
     };
     Output: {
-      color: {
+      selected: {
         name: string,
         value: string
       }
