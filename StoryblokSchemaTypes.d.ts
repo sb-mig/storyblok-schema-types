@@ -336,13 +336,25 @@ export type ComponentPreviewIcon = "block-@" |
   "block-unlocked" |
   "block-wallet"
 
+interface Preset {
+  preset: {
+    name: string
+    preset: any
+    created_at?: string
+    updated_at?: string
+    image?: string
+    color?: string
+    icon?: ComponentPreviewIcon
+    description?: string
+  }
+}
+
 export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema> {
   name: string;
   display_name?: string;
   component_group_name?: string;
   is_root: boolean;
   is_nestable: boolean;
-  schema: TSchema;
   /*
   * any string to jpg/png available publicly on the internet
   * */
@@ -355,7 +367,6 @@ export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema
   * */
   preview_field?: any;
   preview_tmpl?: string;
-  all_presets?: any[];
   preset_id?: any;
   real_name?: string;
   component_group_uuid?: any;
@@ -364,4 +375,6 @@ export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema
   * */
   color?: string;
   icon?: ComponentPreviewIcon
+  schema: TSchema;
+  all_presets?: Preset[]
 }
