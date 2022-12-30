@@ -336,7 +336,7 @@ export type ComponentPreviewIcon = "block-@" |
   "block-unlocked" |
   "block-wallet"
 
-interface Preset {
+export interface Preset {
   preset: {
     name: string
     preset: any
