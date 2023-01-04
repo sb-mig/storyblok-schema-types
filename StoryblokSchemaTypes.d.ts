@@ -378,3 +378,22 @@ export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema
   schema: TSchema;
   all_presets?: Preset[]
 }
+
+interface Dimension {
+  name: string
+  entry_value: string
+}
+
+interface DatasourceEntry {
+  name: string
+  value: string
+  dimension_values?: {
+    [index: string]: string,
+  }
+}
+export interface StoryblokDatasourceSchemaBase {
+  name: string;
+  slug: string;
+  dimensions: Dimension[]
+  datasource_entries: DatasourceEntry[]
+}
