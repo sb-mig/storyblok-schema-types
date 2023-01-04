@@ -404,11 +404,11 @@ export interface StoryblokRolesSchemaBase {
   field_permissions?: string[],
   permissions?: string[],
   role: string,
-  subtitle?: string,
+  subtitle?: string | null,
   datasource_ids?: any[],
   component_ids?: any[],
   branch_ids?: any[],
   allowed_languages?: any[],
   asset_folder_ids?: any[],
-  ext_id?: any,
+  ext_id?: any | null,
 }
