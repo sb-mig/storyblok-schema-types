@@ -397,3 +397,18 @@ export interface StoryblokDatasourceSchemaBase {
   dimensions: Dimension[]
   datasource_entries: DatasourceEntry[]
 }
+
+export interface StoryblokRolesSchemaBase {
+  resolved_allowed_paths?: string[],
+  allowed_paths?: string[],
+  field_permissions?: string[],
+  permissions?: string[],
+  role: string,
+  subtitle?: string,
+  datasource_ids?: any[],
+  component_ids?: any[],
+  branch_ids?: any[],
+  allowed_languages?: any[],
+  asset_folder_ids?: any[],
+  ext_id?: any,
+}
