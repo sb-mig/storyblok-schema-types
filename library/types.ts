@@ -36,7 +36,7 @@ export interface Axis {
 }
 
 
-type MAX_COLS = 16
+type MAX_COLS = 17
 export interface OutputAxis {
   x?: [Mapped<MAX_COLS>[number], Mapped<MAX_COLS>[number]];
   active?: boolean;
