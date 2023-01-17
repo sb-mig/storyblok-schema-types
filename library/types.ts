@@ -29,12 +29,6 @@ export type RowNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
 export type Row = `row-${RowNumber}`;
 
-export interface Axis {
-  x?: [`${Col}${Edge}`, `${Col}${Edge}`];
-  y?: [Row, Row];
-  active?: boolean;
-}
-
 
 type MAX_COLS = 17
 export interface OutputAxis {

@@ -1,4 +1,4 @@
-import {Spacing, Axis, OutputAxis} from './types';
+import {Spacing, OutputAxis} from './types';
 import {
   StoryblokAssetFieldReturnType,
   StoryblokBloksFieldReturnType,
