@@ -1,4 +1,4 @@
-import { Spacing, Axis } from './types';
+import {Spacing, Axis, OutputAxis} from './types';
 import {
   StoryblokAssetFieldReturnType,
   StoryblokBloksFieldReturnType,
@@ -50,7 +50,7 @@ export type BackpackCore<T = string, U = string> = {
       display_name?: string;
       default_value?: BackpackCore['BackpackPosition']['Output'];
     };
-    Output: Axis;
+    Output: OutputAxis;
   };
   BackpackColorPicker: {
     Input: {

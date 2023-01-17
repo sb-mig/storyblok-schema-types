@@ -1,3 +1,5 @@
+import {Mapped} from "./utils";
+
 export type Breakpoints = 's' | 'm' | 'l' | 'xl' | 'xxl';
 export type Size = '-' | '0' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 export type Side = 'pt' | 'pb' | 'mt' | 'mb';
@@ -30,5 +32,12 @@ export type Row = `row-${RowNumber}`;
 export interface Axis {
   x?: [`${Col}${Edge}`, `${Col}${Edge}`];
   y?: [Row, Row];
+  active?: boolean;
+}
+
+
+type MAX_COLS = 16
+export interface OutputAxis {
+  x?: [Mapped<MAX_COLS>[number], Mapped<MAX_COLS>[number]];
   active?: boolean;
 }
