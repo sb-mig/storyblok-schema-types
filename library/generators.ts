@@ -81,6 +81,10 @@ type _GenerateInput<TFields, TBreakpoints extends string = Breakpoints> = {
         ? TFields[Field]['Input'] & {
             default_value?: TFields[Field]['Output'];
         }
+        : TFields[Field] extends BackpackCore['BackpackToggle']
+            ? TFields[Field]['Input'] & {
+            default_value?: TFields[Field]['Output'];
+        }
         : TFields[Field] extends BackpackCore['BackpackColorPicker']
         ? TFields[Field]['Input'] & {
             default_value?: TFields[Field]['Output'];
