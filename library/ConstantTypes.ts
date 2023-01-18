@@ -32,7 +32,23 @@ import {
   StoryblokTextFieldType
 } from "../StoryblokSchemaTypes";
 
+interface Toggle {
+  value: string,
+  name: string,
+  icon: string
+}
+
 export type BackpackCore<T = string, U = string> = {
+  BackpackToggle: {
+    Input: {
+      type: 'custom';
+      field_type: 'backpack-toggle';
+      display_name?: string;
+      options?: [Toggle?, Toggle?, Toggle?, Toggle?, Toggle?, Toggle?];
+      default_value?: BackpackCore['BackpackToggle']['Output'];
+    };
+    Output: string;
+  };
   BackpackSpacing: {
     Input: {
       type: 'custom';
