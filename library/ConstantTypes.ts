@@ -32,19 +32,19 @@ import {
   StoryblokTextFieldType
 } from "../StoryblokSchemaTypes";
 
-interface Toggle {
+interface Toggle<TValue extends string, TName extends string> {
   value: string,
   name: string,
   icon: string
 }
 
-export type BackpackCore<T = string, U = string> = {
+export type BackpackCore<T extends string = string, U extends string = string> = {
   BackpackToggle: {
     Input: {
       type: 'custom';
       field_type: 'backpack-toggle';
       display_name?: string;
-      options?: [Toggle?, Toggle?, Toggle?, Toggle?, Toggle?, Toggle?];
+      options?: [Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?];
       default_value?: BackpackCore['BackpackToggle']['Output'];
     };
     Output: string;
