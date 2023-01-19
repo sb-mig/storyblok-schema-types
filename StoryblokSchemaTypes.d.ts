@@ -223,7 +223,8 @@ export interface StoryblokRichTextType extends StoryblokGenericFieldType {
   toolbar?: RichTextToolbarList[];
   restrict_type?: "groups" | "";
   restrict_components?: boolean;
-  component_group_whitelist?: string[]
+  component_group_whitelist?: string[];
+  component_whitelist?: string[];
 }
 
 export interface StoryblokTableFieldType extends StoryblokGenericFieldType {
