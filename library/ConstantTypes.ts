@@ -47,7 +47,7 @@ export type BackpackCore<T extends string = string, U extends string = string> =
       options?: [Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?];
       default_value?: BackpackCore['BackpackToggle']['Output'];
     };
-    Output: string;
+    Output: U;
   };
   BackpackSpacing: {
     Input: {
