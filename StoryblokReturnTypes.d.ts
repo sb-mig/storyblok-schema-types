@@ -1,8 +1,10 @@
 export interface StoryblokMultilinkFieldReturnType {
     id: string;
     url: string;
+    fieldtype: "multilink";
     linktype: 'url' | 'story';
     cached_url: string;
+    target?: "_blank";
 }
 export type StoryblokNumberFieldReturnType = string
 export type StoryblokDatetimeFieldReturnType = string

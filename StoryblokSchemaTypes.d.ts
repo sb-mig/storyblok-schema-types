@@ -15,6 +15,7 @@ export namespace DeliveryApi {
     linktype: 'url' | 'story';
     fieldtype: 'multilink';
     cached_url: string;
+    target?: "_blank";
   }
 
   interface AssetType {
