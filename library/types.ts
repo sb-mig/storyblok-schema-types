@@ -7,26 +7,26 @@ type TransitionProperty = 'opacity';
 type TransitionEffect = 'fade';
 
 export type Fade = {
-  plugin: "backpack-fade",
-  title: "backpack-fade",
-  description: string,
-  classNames: {
-    before: "beforeFade",
-    after: "afterFade"
+  plugin?: "backpack-fade",
+  title?: "backpack-fade",
+  description?: string,
+  classNames?: {
+    before?: "beforeFade",
+    after?: "afterFade"
   },
-  transitionConfig: {
-    duration: number,
-    transitionProperty: TransitionProperty,
-    transitionTimingFunction: TransitionTimingFunction,
-    delay: number
+  transitionConfig?: {
+    duration?: number,
+    transitionProperty?: TransitionProperty,
+    transitionTimingFunction?: TransitionTimingFunction,
+    delay?: number
   },
-  config: {
-    triggerOnce: boolean,
-    threshold: number
+  config?: {
+    triggerOnce?: boolean,
+    threshold?: number
   },
-  effect: TransitionEffect,
-  enabledOnMobile: boolean,
-  enabled: boolean,
+  effect?: TransitionEffect,
+  enabledOnMobile?: boolean,
+  enabled?: boolean,
 }
 
 
