@@ -1,6 +1,5 @@
 import {
     BackpackBreakpointsPredicate,
-    CorePredicates,
     GeneralNestedPredicate,
     GeneralSchemaPredicate
 } from './predicates';

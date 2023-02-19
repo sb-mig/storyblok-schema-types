@@ -21,11 +21,3 @@ export type GeneralSchemaPredicate = {
   },
   Output: any;
 }
-
-export type CorePredicates = {
-  tab: {
-    Input: {
-      type: 'tab';
-    };
-  }
-}
