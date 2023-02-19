@@ -1,4 +1,4 @@
-import {Spacing, OutputAxis} from './types';
+import {Spacing, OutputAxis, Fade} from './types';
 import {
   StoryblokAssetFieldReturnType,
   StoryblokBloksFieldReturnType,
@@ -48,6 +48,16 @@ export type BackpackCore<T extends string = string, U extends string = string> =
       default_value?: BackpackCore['BackpackToggle']['Output'];
     };
     Output: U;
+  };
+  BackpackFade: {
+    Input: {
+      type: 'custom';
+      field_type: 'backpack-fade';
+      display_name?: string;
+      options?: any[];
+      default_value?: BackpackCore['BackpackFade']['Output'];
+    };
+    Output: Fade;
   };
   BackpackSpacing: {
     Input: {

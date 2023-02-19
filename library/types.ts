@@ -1,5 +1,35 @@
 import {Mapped} from "./utils";
 
+
+
+type TransitionTimingFunction = 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear';
+type TransitionProperty = 'opacity';
+type TransitionEffect = 'fade';
+
+export type Fade = {
+  plugin: "backpack-fade",
+  title: "backpack-fade",
+  description: string,
+  classNames: {
+    before: "beforeFade",
+    after: "afterFade"
+  },
+  transitionConfig: {
+    duration: number,
+    transitionProperty: TransitionProperty,
+    transitionTimingFunction: TransitionTimingFunction,
+    delay: number
+  },
+  config: {
+    triggerOnce: boolean,
+    threshold: number
+  },
+  effect: TransitionEffect,
+  enabledOnMobile: boolean,
+  enabled: boolean,
+}
+
+
 export type Breakpoints = 's' | 'm' | 'l' | 'xl' | 'xxl';
 export type Size = '-' | '0' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 export type Side = 'pt' | 'pb' | 'mt' | 'mb';
