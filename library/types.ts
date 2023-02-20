@@ -28,6 +28,26 @@ export type Fade = {
   enabled?: boolean,
 }
 
+export type Transition = {
+  classNames?: {
+    before?: "beforeFade",
+    after?: "afterFade"
+  },
+  transitionConfig?: {
+    duration?: number,
+    transitionProperty?: TransitionProperty,
+    transitionTimingFunction?: TransitionTimingFunction,
+    delay?: number,
+    stagger?: number
+  },
+  config?: {
+    triggerOnce?: boolean,
+    threshold?: number
+  },
+  effect?: TransitionEffect,
+  enabled?: boolean,
+}
+
 
 export type Breakpoints = 's' | 'm' | 'l' | 'xl' | 'xxl';
 export type Size = '-' | '0' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
