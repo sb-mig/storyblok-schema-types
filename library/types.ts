@@ -25,7 +25,6 @@ export type Fade = {
     threshold?: number
   },
   effect?: TransitionEffect,
-  enabledOnMobile?: boolean,
   enabled?: boolean,
 }
 
