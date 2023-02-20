@@ -15,9 +15,9 @@ export type Fade = {
     after?: "afterFade"
   },
   transitionConfig?: {
-    duration?: number,
     transitionProperty?: TransitionProperty,
     transitionTimingFunction?: TransitionTimingFunction,
+    duration?: number,
     delay?: number
   },
   config?: {
@@ -30,19 +30,18 @@ export type Fade = {
 
 export type Transition = {
   classNames?: {
-    before?: "beforeFade",
-    after?: "afterFade"
+    before?: "beforeTransition",
+    after?: "afterTransition"
   },
   transitionConfig?: {
-    duration?: number,
     transitionProperty?: TransitionProperty,
     transitionTimingFunction?: TransitionTimingFunction,
+    duration?: number,
     delay?: number,
     stagger?: number
   },
   config?: {
     triggerOnce?: boolean,
-    threshold?: number
   },
   effect?: TransitionEffect,
   enabled?: boolean,
