@@ -10,22 +10,24 @@ export type Fade = {
   plugin?: "backpack-fade",
   title?: "backpack-fade",
   description?: string,
-  classNames?: {
-    before?: "beforeFade",
-    after?: "afterFade"
-  },
-  transitionConfig?: {
-    duration?: number,
-    transitionProperty?: TransitionProperty,
-    transitionTimingFunction?: TransitionTimingFunction,
-    delay?: number
-  },
-  config?: {
-    triggerOnce?: boolean,
-    threshold?: number
-  },
-  effect?: TransitionEffect,
-  enabled?: boolean,
+  data: {
+    classNames?: {
+      before?: "beforeFade",
+      after?: "afterFade"
+    },
+    transitionConfig?: {
+      duration?: number,
+      transitionProperty?: TransitionProperty,
+      transitionTimingFunction?: TransitionTimingFunction,
+      delay?: number
+    },
+    config?: {
+      triggerOnce?: boolean,
+      threshold?: number
+    },
+    effect?: TransitionEffect,
+    enabled?: boolean,
+  }
 }
 
 
