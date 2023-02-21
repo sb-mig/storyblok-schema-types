@@ -47,6 +47,19 @@ export type Transition = {
   enabled?: boolean,
 }
 
+export type ColorsThemeVariables = '--color-primary' | '--color-text' | '--color-text-light' | '--color-link' | '--color-link-bg' | '--color-ui-accent' | '--color-ui-border' | '--color-ui-border-light';
+
+export type Theme = {
+  selected: Partial<Record<ColorsThemeVariables, string>>
+}
+
+const exampleThemeOutput: Theme = {
+  selected: {
+    "--color-link": 'blue',
+    "--color-text": 'red'
+  }
+}
+
 
 export type Breakpoints = 's' | 'm' | 'l' | 'xl' | 'xxl';
 export type Size = '-' | '0' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
