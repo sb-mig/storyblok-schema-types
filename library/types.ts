@@ -50,7 +50,7 @@ export type Transition = {
 export type ColorsThemeVariables = '--color-primary' | '--color-text' | '--color-text-light' | '--color-link' | '--color-link-bg' | '--color-ui-accent' | '--color-ui-border' | '--color-ui-border-light';
 
 export type Theme = {
-  selected: Partial<Record<ColorsThemeVariables, string>>
+  selected?: Partial<Record<ColorsThemeVariables, string>>
 }
 
 const exampleThemeOutput: Theme = {
