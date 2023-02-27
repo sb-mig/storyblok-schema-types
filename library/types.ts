@@ -2,7 +2,7 @@ import {Mapped} from "./utils";
 
 
 
-type TransitionTimingFunction = 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear';
+type TransitionTimingFunction = 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear' | string;
 type TransitionProperty = 'opacity';
 type TransitionEffect = 'fade';
 
@@ -42,9 +42,9 @@ export type Transition = {
   },
   config?: {
     triggerOnce?: boolean,
+    effect?: TransitionEffect,
+    enabled?: boolean,
   },
-  effect?: TransitionEffect,
-  enabled?: boolean,
 }
 
 export type ColorsThemeVariables = '--color-primary' | '--color-text' | '--color-text-light' | '--color-link' | '--color-link-bg' | '--color-ui-accent' | '--color-ui-border' | '--color-ui-border-light';
