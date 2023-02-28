@@ -43,7 +43,7 @@ export type Transition = {
   config?: {
     triggerOnce?: boolean,
     effect?: TransitionEffect,
-    enabled?: boolean,
+    enabled?: '-' | 'enabled' | 'disabled'
   },
 }
 
