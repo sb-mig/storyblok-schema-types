@@ -35,7 +35,7 @@ export type Transition = {
   },
   transitionConfig?: {
     transitionProperty?: TransitionProperty,
-    transitionTimingFunction?: TransitionTimingFunction,
+    easing?: TransitionTimingFunction,
     duration?: string,
     delay?: number,
     stagger?: string
