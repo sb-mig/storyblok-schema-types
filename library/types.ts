@@ -36,9 +36,9 @@ export type Transition = {
   transitionConfig?: {
     transitionProperty?: TransitionProperty,
     transitionTimingFunction?: TransitionTimingFunction,
-    duration?: number,
+    duration?: string,
     delay?: number,
-    stagger?: number
+    stagger?: string
   },
   config?: {
     triggerOnce?: boolean,
