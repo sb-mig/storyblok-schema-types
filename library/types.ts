@@ -29,6 +29,7 @@ export type Fade = {
 }
 
 export type Transition = {
+  enabled?: '-' | 'enabled' | 'disabled'
   classNames?: {
     before?: "beforeTransition",
     after?: "afterTransition"
@@ -43,7 +44,6 @@ export type Transition = {
   config?: {
     triggerOnce?: boolean,
     effect?: TransitionEffect,
-    enabled?: '-' | 'enabled' | 'disabled'
   },
 }
 
