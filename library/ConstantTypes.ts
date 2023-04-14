@@ -33,9 +33,10 @@ import {
 } from "../StoryblokSchemaTypes";
 
 interface Toggle<TValue extends string, TName extends string> {
-  value: string,
-  name: string,
+  value: string
+  name: string
   icon: string
+  tooltip_text?: string
 }
 
 export type BackpackCore<T extends string = string, U extends string = string> = {
