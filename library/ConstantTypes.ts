@@ -126,7 +126,11 @@ export type BackpackCore<T extends any = any, U extends string = string> = {
     Output: Core['number']['Output'];
   },
   BackpackOption: {
-    Input: T extends WrappedInBreakpointPredicate ? Omit<StoryblokOptionFieldTypeV3<T, U>, 'default_value'> : Omit<Core<T, U>['option']['Input'], 'default_value'>;
+    Input: Omit<Core<T, U>['option']['Input'], 'default_value'>;
+    Output: Core<T, U>['option']['Output'];
+  },
+  BackpackOptionBreakpoints: {
+    Input: Omit<StoryblokOptionFieldTypeV3<T, U>, 'default_value'>;
     Output: Core<T, U>['option']['Output'];
   },
   BackpackBoolean: {

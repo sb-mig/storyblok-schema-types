@@ -10,7 +10,8 @@ import {RemoveNever} from "./utils";
 
 type _GenerateNestedInput<TFields, TBreakpoints extends string = Breakpoints> =
     {
-        [Field in keyof TFields]: TFields[Field] extends BackpackCore['BackpackSpacing']
+        [Field in keyof TFields]
+        : TFields[Field] extends BackpackCore['BackpackSpacing']
         ? BackpackCore['BackpackSpacing']['Input'] & {
             default_value: {
                 [key in TBreakpoints]?: TFields[Field]['Output'];
@@ -58,6 +59,13 @@ type _GenerateNestedInput<TFields, TBreakpoints extends string = Breakpoints> =
                 [key in TBreakpoints]?: TFields[Field]['Output'];
             };
         }
+        : TFields[Field] extends BackpackCore['BackpackOptionBreakpoints']
+            ? TFields[Field]['Input'] & {
+            default_value: {
+                [key in TBreakpoints]?: TFields[Field]['Output'];
+            };
+        }
+
         : TFields[Field] extends BackpackCore['BackpackBoolean']
             ? BackpackCore['BackpackBoolean']['Input'] & {
             default_value: {
