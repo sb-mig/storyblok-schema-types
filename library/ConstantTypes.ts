@@ -24,29 +24,31 @@ import {
   StoryblokLinkFieldType, StoryblokMarkdownFieldType,
   StoryblokMultiAssetFieldType,
   StoryblokNumberFieldType,
-  StoryblokOptionFieldType,
+  StoryblokOptionFieldType, StoryblokOptionFieldTypeV3,
   StoryblokOptionsFieldType, StoryblokRichTextType,
   StoryblokSectionSchemaFieldGrouping, StoryblokTableFieldType,
   StoryblokTabSchemaFieldGrouping,
   StoryblokTextareaFieldType,
   StoryblokTextFieldType
 } from "../StoryblokSchemaTypes";
+import {WrappedInBreakpointPredicate} from "./predicates";
 
-interface Toggle<TValue extends string, TName extends string> {
-  value: string
-  name: string
+interface Toggle<TValue extends any, TName extends string> {
+  value: TValue
+  name: TName
   icon: string
   tooltip_text?: string
 }
 
-export type BackpackCore<T extends string = string, U extends string = string> = {
+
+export type BackpackCore<T extends any = any, U extends string = string> = {
   BackpackToggle: {
     Input: {
       type: 'custom';
       field_type: 'backpack-toggle';
       display_name?: string;
       options?: [Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?, Toggle<T, U>?];
-      default_value?: BackpackCore['BackpackToggle']['Output'];
+      default_value?: BackpackCore<T, U>['BackpackToggle']['Output'];
     };
     Output: U;
   };
@@ -124,9 +126,9 @@ export type BackpackCore<T extends string = string, U extends string = string> =
     Output: Core['number']['Output'];
   },
   BackpackOption: {
-    Input: Omit<Core<T, U>['option']['Input'], 'default_value'>;
+    Input: T extends WrappedInBreakpointPredicate ? Omit<StoryblokOptionFieldTypeV3<T, U>, 'default_value'> : Omit<Core<T, U>['option']['Input'], 'default_value'>;
     Output: Core<T, U>['option']['Output'];
-  }
+  },
   BackpackBoolean: {
     Input: Omit<Core['boolean']['Input'], 'default_value'>;
     Output: Core['boolean']['Output'];

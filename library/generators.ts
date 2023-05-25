@@ -58,6 +58,12 @@ type _GenerateNestedInput<TFields, TBreakpoints extends string = Breakpoints> =
                 [key in TBreakpoints]?: TFields[Field]['Output'];
             };
         }
+        : TFields[Field] extends BackpackCore['BackpackOptionBreakpoint']
+            ? BackpackCore['BackpackOptionBreakpoint']['Input'] & {
+            default_value: {
+                [key in TBreakpoints]?: TFields[Field]['Output'];
+            };
+        }
         : TFields[Field] extends BackpackCore['BackpackBoolean']
             ? BackpackCore['BackpackBoolean']['Input'] & {
             default_value: {
