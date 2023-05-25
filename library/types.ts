@@ -1,7 +1,5 @@
 import {Mapped} from "./utils";
 
-
-
 type TransitionTimingFunction = 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear' | string;
 type TransitionProperty = 'opacity';
 type TransitionEffect = 'fade';
@@ -27,7 +25,6 @@ export type Fade = {
   effect?: TransitionEffect,
   enabled?: boolean,
 }
-
 export type Transition = {
   enabled?: '-' | 'enabled' | 'disabled'
   classNames?: {
