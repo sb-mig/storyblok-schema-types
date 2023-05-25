@@ -21,3 +21,5 @@ export type GeneralSchemaPredicate = {
   },
   Output: any;
 }
+
+export interface WrappedInBreakpointPredicate { s?: any, m?: any, l?: any }
