@@ -31,7 +31,6 @@ import {
   StoryblokTextareaFieldType,
   StoryblokTextFieldType
 } from "../StoryblokSchemaTypes";
-import {WrappedInBreakpointPredicate} from "./predicates";
 
 interface Toggle<TValue extends any, TName extends string> {
   value: TValue
