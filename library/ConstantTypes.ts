@@ -23,7 +23,7 @@ import {
   StoryblokLinkFieldType, StoryblokMarkdownFieldType,
   StoryblokMultiAssetFieldType,
   StoryblokNumberFieldType,
-  StoryblokOptionFieldType, StoryblokOptionFieldTypeV3,
+  StoryblokOptionFieldType,
   StoryblokOptionsFieldType, StoryblokRichTextType,
   StoryblokSectionSchemaFieldGrouping, StoryblokTableFieldType,
   StoryblokTabSchemaFieldGrouping,
