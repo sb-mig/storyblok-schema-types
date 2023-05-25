@@ -99,13 +99,3 @@ export type Core<T = string, U = string> = {
     Input: StoryblokSectionSchemaFieldGrouping<T>;
   };
 };
-
-export type WithBackpack<TNestedSchema extends { Input: any; Output: any }> = {
-  Input: {
-    type: 'custom';
-    field_type: 'backpack-breakpoints';
-    display_name?: string
-    options: {name: keyof TNestedSchema['Input'], value: string}[]
-  };
-  Output: TNestedSchema['Output'];
-};

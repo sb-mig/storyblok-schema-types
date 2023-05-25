@@ -11,9 +11,6 @@
     "./StoryblokSchemaTypes": {
       "types": "./StoryblokSchemaTypes.d.ts"
     },
-    "./TypeHelpers": {
-      "types": "./TypeHelpers.d.ts"
-    },
     "./GenericStoryblokReturnTypes": {
       "types": "./GenericStoryblokReturnTypes.d.ts"
     }
@@ -23,7 +20,6 @@
     "GenericStoryblokReturnTypes.d.ts",
     "StoryblokSchemaTypes.d.ts",
     "StoryblokReturnTypes.d.ts",
-    "TypeHelpers.d.ts",
     "library"
   ],
   "scripts": {
