@@ -1,5 +1,3 @@
-import {WrappedInBreakpointPredicate} from "./library/predicates";
-
 export namespace DeliveryApi {
   export interface TextType {
     type: "text",
@@ -134,7 +132,7 @@ export interface StoryblokOption<TOptionsName = string, TOptionsValue = string> 
 export type StoryblokOptionBPFieldType<TOptionsName = string, TOptionsValue = string> = StoryblokOptionFieldType<TOptionsName, TOptionsValue, BPDefaultValues<TOptionsValue>>
 
 
-export interface StoryblokOptionFieldTypeV3<TOptions extends WrappedInBreakpointPredicate = {s: any}, TDefaultValue = string>
+export interface StoryblokOptionFieldTypeV3<TOptions extends any, TDefaultValue = string>
     extends StoryblokGenericFieldType {
   type: 'option';
   options?: TOptions;
