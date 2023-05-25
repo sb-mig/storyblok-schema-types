@@ -34,11 +34,12 @@ import {
 import {WrappedInBreakpointPredicate} from "./predicates";
 
 interface Toggle<TValue extends any, TName extends string> {
-  value: string
-  name: string
+  value: TValue
+  name: TName
   icon: string
   tooltip_text?: string
 }
+
 
 export type BackpackCore<T extends any = any, U extends string = string> = {
   BackpackToggle: {
