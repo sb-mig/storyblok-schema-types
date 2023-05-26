@@ -124,6 +124,10 @@ export type BackpackCore<T extends any = any, U extends string = string> = {
     Input: Omit<Core['number']['Input'], 'default_value'>;
     Output: Core['number']['Output'];
   },
+  BackpackText: {
+    Input: Omit<Core['text']['Input'], 'default_value'>;
+    Output: Core['text']['Output'];
+  },
   BackpackOption: {
     Input: Omit<Core<T, U>['option']['Input'], 'default_value'>;
     Output: Core<T, U>['option']['Output'];
