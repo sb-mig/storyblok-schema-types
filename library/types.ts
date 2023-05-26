@@ -96,3 +96,15 @@ export interface OutputAxis {
   x?: [Mapped<MAX_COLS>[number], Mapped<MAX_COLS>[number]];
   active?: boolean;
 }
+
+// PositionLayer
+export type LayerAlign = 'start' | 'center' | 'end';
+export type LayerAlignXY = [LayerAlign, LayerAlign];
+
+export type BackpackPositionAlignOutput = {
+  top?: string
+  right?: string
+  bottom?: string
+  left?: string
+  align?: LayerAlignXY
+}

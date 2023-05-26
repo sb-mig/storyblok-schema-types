@@ -1,4 +1,4 @@
-import {Spacing, OutputAxis, Fade, Transition, Theme} from './types';
+import {Spacing, OutputAxis, Fade, Transition, Theme, BackpackPositionAlignOutput} from './types';
 import {
   StoryblokAssetFieldReturnType,
   StoryblokBloksFieldReturnType,
@@ -99,6 +99,15 @@ export type BackpackCore<T extends any = any, U extends string = string> = {
       default_value?: BackpackCore['BackpackPosition']['Output'];
     };
     Output: OutputAxis;
+  };
+  BackpackPositionAlign: {
+    Input: {
+      type: 'custom';
+      field_type: 'backpack-position-align';
+      display_name?: string;
+      default_value?: BackpackCore['BackpackPositionAlign']['Output'];
+    };
+    Output: BackpackPositionAlignOutput;
   };
   BackpackColorPicker: {
     Input: {
