@@ -1,6 +1,6 @@
 {
   "name": "storyblok-schema-types",
-  "version": "0.4.42",
+  "version": "1.0.0",
   "description": "",
   "main": "./index.d.ts",
   "types": "./index.d.ts",
@@ -11,9 +11,6 @@
     "./StoryblokSchemaTypes": {
       "types": "./StoryblokSchemaTypes.d.ts"
     },
-    "./TypeHelpers": {
-      "types": "./TypeHelpers.d.ts"
-    },
     "./GenericStoryblokReturnTypes": {
       "types": "./GenericStoryblokReturnTypes.d.ts"
     }
@@ -23,7 +20,6 @@
     "GenericStoryblokReturnTypes.d.ts",
     "StoryblokSchemaTypes.d.ts",
     "StoryblokReturnTypes.d.ts",
-    "TypeHelpers.d.ts",
     "library"
   ],
   "scripts": {
