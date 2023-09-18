@@ -215,7 +215,9 @@ type CommonToolbarList =
     "quote" |
     "olist" |
     "link" |
-    "image"
+    "image" |
+    "sub" |
+    "sup"
 
 export type Headings =
     "h1" |
