@@ -87,6 +87,7 @@ export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
   type: 'multilink';
   email_link_type?: boolean;
   asset_link_type?: boolean;
+  allow_target_blank?: boolean;
   show_anchor?: boolean;
   restrict_content_types?: boolean;
   component_whitelist?: string[];
