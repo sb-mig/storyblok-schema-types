@@ -173,7 +173,7 @@ export type FileTypes = 'images' | 'videos' | 'audios' | 'texts'
 
 export interface StoryblokAssetFieldType extends StoryblokGenericFieldType {
   type: 'asset';
-  filetypes: FileTypes[] // empty array means - every filetype
+  filetypes?: FileTypes[] // empty array means - every filetype
   allow_external_url?: boolean
   asset_folder_id?: number // id of the default folder for assets field type
 }
