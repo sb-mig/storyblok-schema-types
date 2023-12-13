@@ -38,12 +38,36 @@ interface StoryblokKeyValueOption<TOptionsName = string, TOptionsValue = string>
   value: TOptionsValue;
 }
 
+export type ValidationRule = 'not_equals' | 'empty' | 'not_empty' | 'equals' | 'gt' | 'lt'
+
+export interface RuleCondition {
+  validated_object: {
+    type: "field"
+    field_key: string
+    field_attr: string
+  },
+  validation: ValidationRule,
+  value: any
+}
+
+export interface Modification {
+  display?: "hide",
+  required?: boolean
+}
+
+export interface ConditionalSettings {
+  rule_conditions: RuleCondition[]
+  rule_match: "any" | "all",
+  modifications: Modification[],
+}
+
 export interface StoryblokGenericFieldType {
   display_name?: string;
   required?: boolean;
   translatable?: boolean;
   description?: string;
   pos?: number;
+  conditional_settings?: ConditionalSettings[];
 }
 
 export interface StoryblokBloksFieldType<TComponents = string> extends StoryblokGenericFieldType {
