@@ -268,6 +268,7 @@ export interface StoryblokRichTextType extends StoryblokGenericFieldType {
   restrict_components?: boolean;
   component_group_whitelist?: string[];
   component_whitelist?: string[];
+  allow_target_blank?: boolean;
 }
 
 export interface StoryblokTableFieldType extends StoryblokGenericFieldType {
