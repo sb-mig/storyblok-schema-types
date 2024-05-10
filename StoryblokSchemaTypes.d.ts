@@ -242,7 +242,8 @@ type CommonToolbarList =
     "link" |
     "image" |
     "sub" |
-    "sup"
+    "sup" |
+    "emoji"
 
 export type Headings =
     "h1" |
