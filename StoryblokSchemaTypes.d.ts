@@ -245,6 +245,18 @@ type CommonToolbarList =
     "sup" |
     "emoji"
 
+type AIToolbarList = "ai-complete" |
+    "ai-shorten" |
+    "ai-extend" |
+    "ai-rephrase" |
+    "ai-summarize" |
+    "ai-simplify" |
+    "ai-tone" |
+    "ai-translate" |
+    "ai-emoji" |
+    "ai-tldr" |
+    "ai-spelling"
+
 export type Headings =
     "h1" |
     "h2" |
@@ -257,7 +269,7 @@ export type Headings =
 
 
 
-export type RichTextToolbarList =  CommonToolbarList | "paste" | "blok" | "underline" | "strike"
+export type RichTextToolbarList =  CommonToolbarList | AIToolbarList | "paste" | "blok" | "underline" | "strike"
 
 export interface StoryblokRichTextType extends StoryblokGenericFieldType {
   type: 'richtext';
