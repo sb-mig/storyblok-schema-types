@@ -245,7 +245,7 @@ type CommonToolbarList =
     "sup" |
     "emoji"
 
-type AIToolbarList = "ai-complete" |
+export type AIToolbarList = "ai-complete" |
     "ai-shorten" |
     "ai-extend" |
     "ai-rephrase" |
