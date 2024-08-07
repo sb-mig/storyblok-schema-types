@@ -68,6 +68,7 @@ export interface StoryblokGenericFieldType {
   description?: string;
   pos?: number;
   conditional_settings?: ConditionalSettings[];
+  tooltip?: boolean;
 }
 
 export interface StoryblokBloksFieldType<TComponents = string> extends StoryblokGenericFieldType {
