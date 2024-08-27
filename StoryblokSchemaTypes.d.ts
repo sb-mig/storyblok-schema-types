@@ -4,7 +4,7 @@ export namespace DeliveryApi {
     display_name: string,
     required?: boolean,
     translatable?: boolean,
-    no_translate?: boolean,
+    no_translate?: boolean, // if true, than the translations will not be exported by export translations plugin
     description?: string,
     default_value?: string,
     max_length?: number
@@ -34,6 +34,7 @@ export namespace DeliveryApi {
 
 
 interface StoryblokKeyValueOption<TOptionsName = string, TOptionsValue = string> {
+  _uid?: string;
   name: TOptionsName;
   value: TOptionsValue;
 }
@@ -74,11 +75,13 @@ export interface StoryblokGenericFieldType {
 export interface StoryblokBloksFieldType<TComponents = string> extends StoryblokGenericFieldType {
   type: 'bloks';
   default_value?: string;
+  minimum?: number;
   maximum?: number;
-  restrict_type?: 'groups' | ''; // if we restrict components, than its '' ...
+  restrict_type?: 'tags' | 'groups' | '' ; // if we restrict components, than its '' ...
   restrict_components? : boolean;
   component_whitelist?: TComponents[] | string[]; // component names
   component_group_whitelist?: string[]; // group uuids
+  component_tag_whitelist?: number[]; // tag numbers: example [ 3473 ]
 }
 
 export interface StoryblokCustomFieldType<TOptionsName = string, TOptionsValue = string, TReturnValue = any>
@@ -92,6 +95,7 @@ export interface StoryblokCustomFieldType<TOptionsName = string, TOptionsValue =
   folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
   filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
   external_datasource?: string // url to external json, example: https://ef.design/datasource.json
+  required_fields?:string; // comma separated list of required fields, example: "field1,field2"
 }
 
 export interface StoryblokCustomFieldTypeV2<TDefaultValue = any, TOptions = StoryblokKeyValueOption<string, string>[]>
@@ -113,11 +117,12 @@ export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
   email_link_type?: boolean;
   asset_link_type?: boolean;
   allow_target_blank?: boolean;
+  allow_custom_attributes?: boolean;
   show_anchor?: boolean;
   restrict_content_types?: boolean;
-  component_whitelist?: string[];
-  force_link_scope?: boolean;
-  link_scope?: string;
+  component_whitelist?: string[]; // content types components
+  force_link_scope?: boolean; // force folder restriction
+  link_scope?: string; // example: "categories/"
 }
 
 export interface StoryblokSectionSchemaFieldGrouping<TKeys = string> extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
@@ -136,6 +141,9 @@ export interface StoryblokOptionsFieldType<TOptionsName = string, TOptionsValue 
   options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   min_options?: string;
   max_options?: string;
+  is_reference_type?: boolean;
+  entry_appearance?: "card" | "link";
+  allow_advanced_search?: boolean;
   default_value?: TDefaultValue[];
   exclude_empty_option?: boolean;
   use_uuid?: boolean
@@ -149,6 +157,9 @@ export interface StoryblokOptionsFieldType<TOptionsName = string, TOptionsValue 
 export interface StoryblokOption<TOptionsName = string, TOptionsValue = string> {
   options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
+  is_reference_type?: boolean;
+  entry_appearance?: "card" | "link";
+  allow_advanced_search?: boolean;
   datasource_slug?: string; // or some custom Union of known datasources from the space
   folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
   filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
@@ -165,6 +176,9 @@ export interface StoryblokOptionFieldTypeV3<TOptions extends any, TDefaultValue 
   exclude_empty_option?: boolean;
   use_uuid?: boolean;
   default_value?: TDefaultValue;
+  is_reference_type?: boolean;
+  entry_appearance?: "card" | "link";
+  allow_advanced_search?: boolean;
   source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
   datasource_slug?: string; // or some custom Union of known datasources from the space
   folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
@@ -192,6 +206,9 @@ export interface StoryblokOptionFieldTypeV2<TDefaultValue = any, TOptions = Stor
   exclude_empty_option?: boolean;
   use_uuid?: boolean;
   default_value?: TDefaultValue;
+  is_reference_type?: boolean;
+  entry_appearance?: "card" | "link";
+  allow_advanced_search?: boolean;
 }
 
 export type FileTypes = 'images' | 'videos' | 'audios' | 'texts'
@@ -213,7 +230,7 @@ export interface StoryblokMultiAssetFieldType extends StoryblokGenericFieldType 
 export interface StoryblokTextFieldType extends StoryblokGenericFieldType {
   type: 'text';
   default_value?: string;
-  no_translate?: boolean;
+  no_translate?: boolean; // if true, than the translations will not be exported by export translations plugin
   max_length?: number;
   regex?: string;
   rtl?: boolean;
@@ -278,11 +295,13 @@ export interface StoryblokRichTextType extends StoryblokGenericFieldType {
   style_options?: StoryblokKeyValueOption[];
   customize_toolbar?: boolean;
   toolbar?: RichTextToolbarList[];
-  restrict_type?: "groups" | "";
+  restrict_type?: "tags" | "groups" | ""; // when "" - components are the restriction
   restrict_components?: boolean;
   component_group_whitelist?: string[];
   component_whitelist?: string[];
   allow_target_blank?: boolean;
+  allow_custom_attributes?: boolean;
+  component_tag_whitelist?: number[];
 }
 
 export interface StoryblokTableFieldType extends StoryblokGenericFieldType {
@@ -306,6 +325,7 @@ export interface StoryblokMarkdownFieldType extends StoryblokGenericFieldType {
 export interface StoryblokBooleanFieldType<TDefaultValue = boolean> extends StoryblokGenericFieldType {
   type: 'boolean';
   default_value?: TDefaultValue;
+  inline_label?: boolean;
 }
 
 interface BPDefaultValues<TDefaultValue = any> {
@@ -320,7 +340,7 @@ export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BPDefaultVal
 
 export interface StoryblokNumberFieldType<TDefaultValue = string> extends StoryblokGenericFieldType {
   type: 'number';
-  no_translate?: boolean;
+  no_translate?: boolean; // if true, than the translations will not be exported by export translations plugin
   default_value?: TDefaultValue;
   min_value?: number;
   max_value?: number;
@@ -410,6 +430,9 @@ export interface Preset {
 
 export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema> {
   name: string;
+  created_at?: string;
+  updated_at?: string;
+  id?: string
   display_name?: string;
   component_group_name?: string;
   is_root: boolean;
@@ -428,7 +451,7 @@ export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema
   preview_tmpl?: string;
   preset_id?: any;
   real_name?: string;
-  component_group_uuid?: any;
+  component_group_uuid?: string;
   /*
   * any color string
   * */
@@ -436,6 +459,12 @@ export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema
   icon?: ComponentPreviewIcon
   schema: TSchema;
   all_presets?: Preset[]
+  internal_tags_list?: {
+    id: number
+    name: string
+  }[]
+  internal_tag_ids?: string[]
+  content_type_asset_preview?: any
 }
 
 interface Dimension {
