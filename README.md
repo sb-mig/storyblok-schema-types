@@ -21,7 +21,7 @@ export interface StoryblokGenericFieldType {
 export interface StoryblokTextFieldType extends StoryblokGenericFieldType {
   type: 'text';
   default_value?: string;
-  no_translate?: boolean; // if true, than the translations will not be exported by export translations plugin
+  no_translate?: boolean; // if true, then the translations will not be exported by export translations plugin
   max_length?: number;
   regex?: string;
   rtl?: boolean;
