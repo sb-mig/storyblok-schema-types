@@ -2,7 +2,8 @@ export interface StoryblokMultilinkFieldReturnType {
     id: string;
     url: string;
     fieldtype: "multilink";
-    linktype: 'url' | 'story';
+    email?: string;
+    linktype: 'url' | 'story' | 'email';
     cached_url: string;
     target?: "_blank";
 }
