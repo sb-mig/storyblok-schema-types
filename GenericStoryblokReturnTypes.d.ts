@@ -9,7 +9,8 @@ export interface GenericReturnTypeMultilink {
     returnType: {
         id: string;
         url: string;
-        linktype: 'url' | 'story';
+        email?: string;
+        linktype: 'url' | 'story' | 'email';
         cached_url: string;
     };
 }
