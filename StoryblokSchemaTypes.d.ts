@@ -417,6 +417,7 @@ export type ComponentPreviewIcon = "block-@" |
 
 export interface Preset {
   preset: {
+    id?: number // only when comming from Storyblok instance
     name: string
     preset: any
     created_at?: string
