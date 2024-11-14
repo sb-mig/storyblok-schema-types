@@ -88,7 +88,7 @@ export interface StoryblokCustomFieldType<TOptionsName = string, TOptionsValue =
     extends StoryblokGenericFieldType, StoryblokOption<TOptionsName, TOptionsValue> {
   type: 'custom';
   field_type: string;
-  options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
+  options: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   default_value?: TReturnValue;
   source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
   datasource_slug?: string; // or some custom Union of known datasources from the space
