@@ -435,6 +435,7 @@ export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema
   updated_at?: string;
   id?: string
   display_name?: string;
+  description?: string;
   component_group_name?: string;
   is_root: boolean;
   is_nestable: boolean;
