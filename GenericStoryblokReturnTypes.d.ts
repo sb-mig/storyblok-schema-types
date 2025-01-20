@@ -12,6 +12,7 @@ export interface GenericReturnTypeMultilink {
         email?: string;
         linktype: 'url' | 'story' | 'email';
         cached_url: string;
+        anchor?: string;
     };
 }
 
