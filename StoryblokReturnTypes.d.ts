@@ -6,6 +6,7 @@ export interface StoryblokMultilinkFieldReturnType {
     linktype: 'url' | 'story' | 'email';
     cached_url: string;
     target?: "_blank";
+    anchor?: string;
 }
 export type StoryblokNumberFieldReturnType = string
 export type StoryblokDatetimeFieldReturnType = string
