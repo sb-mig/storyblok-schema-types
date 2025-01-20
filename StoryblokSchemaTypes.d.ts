@@ -1,19 +1,19 @@
 export namespace DeliveryApi {
   export interface TextType {
-    type: "text",
-    display_name: string,
-    required?: boolean,
-    translatable?: boolean,
-    no_translate?: boolean, // if true, then the translations will not be exported by export translations plugin
-    description?: string,
-    default_value?: string,
-    max_length?: number
+    type: "text";
+    display_name: string;
+    required?: boolean;
+    translatable?: boolean;
+    no_translate?: boolean; // if true, then the translations will not be exported by export translations plugin
+    description?: string;
+    default_value?: string;
+    max_length?: number;
   }
   interface LinkType {
     id: string;
     url: string;
-    linktype: 'url' | 'story';
-    fieldtype: 'multilink';
+    linktype: "url" | "story";
+    fieldtype: "multilink";
     cached_url: string;
     target?: "_blank";
   }
@@ -21,7 +21,7 @@ export namespace DeliveryApi {
   interface AssetType {
     copyright?: string;
     source?: string;
-    fieldtype: 'asset',
+    fieldtype: "asset";
     name: string;
     title: string;
     id: number;
@@ -32,34 +32,42 @@ export namespace DeliveryApi {
   }
 }
 
-
-interface StoryblokKeyValueOption<TOptionsName = string, TOptionsValue = string> {
+interface StoryblokKeyValueOption<
+  TOptionsName = string,
+  TOptionsValue = string
+> {
   _uid?: string;
   name: TOptionsName;
   value: TOptionsValue;
 }
 
-export type ValidationRule = 'not_equals' | 'empty' | 'not_empty' | 'equals' | 'gt' | 'lt'
+export type ValidationRule =
+  | "not_equals"
+  | "empty"
+  | "not_empty"
+  | "equals"
+  | "gt"
+  | "lt";
 
 export interface RuleCondition {
   validated_object: {
-    type: "field"
-    field_key: string
-    field_attr: string
-  },
-  validation: ValidationRule,
-  value: any
+    type: "field";
+    field_key: string;
+    field_attr: string;
+  };
+  validation: ValidationRule;
+  value: any;
 }
 
 export interface Modification {
-  display?: "hide",
-  required?: boolean
+  display?: "hide";
+  required?: boolean;
 }
 
 export interface ConditionalSettings {
-  rule_conditions: RuleCondition[]
-  rule_match: "any" | "all",
-  modifications: Modification[],
+  rule_conditions: RuleCondition[];
+  rule_match: "any" | "all";
+  modifications: Modification[];
 }
 
 export interface StoryblokGenericFieldType {
@@ -72,48 +80,54 @@ export interface StoryblokGenericFieldType {
   tooltip?: boolean;
 }
 
-export interface StoryblokBloksFieldType<TComponents = string> extends StoryblokGenericFieldType {
-  type: 'bloks';
+export interface StoryblokBloksFieldType<TComponents = string>
+  extends StoryblokGenericFieldType {
+  type: "bloks";
   default_value?: string;
   minimum?: number;
   maximum?: number;
-  restrict_type?: 'tags' | 'groups' | '' ; // if we restrict components, than its '' ...
-  restrict_components? : boolean;
+  restrict_type?: "tags" | "groups" | ""; // if we restrict components, than its '' ...
+  restrict_components?: boolean;
   component_whitelist?: TComponents[] | string[]; // component names
   component_group_whitelist?: string[]; // group uuids
   component_tag_whitelist?: number[]; // tag numbers: example [ 3473 ]
 }
 
-export interface StoryblokCustomFieldType<TOptionsName = string, TOptionsValue = string, TReturnValue = any>
-    extends StoryblokGenericFieldType, StoryblokOption<TOptionsName, TOptionsValue> {
-  type: 'custom';
+export interface StoryblokCustomFieldType<
+  TOptionsName = string,
+  TOptionsValue = string,
+  TReturnValue = any
+> extends StoryblokGenericFieldType,
+    StoryblokOption<TOptionsName, TOptionsValue> {
+  type: "custom";
   field_type: string;
   options: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   default_value?: TReturnValue;
-  source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
+  source?: "internal" | "internal_stories" | "external" | "internal_languages";
   datasource_slug?: string; // or some custom Union of known datasources from the space
-  folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
-  filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
-  external_datasource?: string // url to external json, example: https://ef.design/datasource.json
-  required_fields?:string; // comma separated list of required fields, example: "field1,field2"
+  folder_slug?: string; // just slug / path to stories we would like to get, example /my-stories
+  filter_content_type?: string[]; // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
+  external_datasource?: string; // url to external json, example: https://ef.design/datasource.json
+  required_fields?: string; // comma separated list of required fields, example: "field1,field2"
 }
 
-export interface StoryblokCustomFieldTypeV2<TDefaultValue = any, TOptions = StoryblokKeyValueOption<string, string>[]>
-    extends StoryblokGenericFieldType {
-  type: 'custom';
+export interface StoryblokCustomFieldTypeV2<
+  TDefaultValue = any,
+  TOptions = StoryblokKeyValueOption<string, string>[]
+> extends StoryblokGenericFieldType {
+  type: "custom";
   field_type: string;
   options?: TOptions;
   default_value?: TDefaultValue;
-  source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
+  source?: "internal" | "internal_stories" | "external" | "internal_languages";
   datasource_slug?: string; // or some custom Union of known datasources from the space
-  folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
-  filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
-  external_datasource?: string // url to external json, example: https://ef.design/datasource.json
+  folder_slug?: string; // just slug / path to stories we would like to get, example /my-stories
+  filter_content_type?: string[]; // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
+  external_datasource?: string; // url to external json, example: https://ef.design/datasource.json
 }
 
-
 export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
-  type: 'multilink';
+  type: "multilink";
   email_link_type?: boolean;
   asset_link_type?: boolean;
   allow_target_blank?: boolean;
@@ -125,19 +139,30 @@ export interface StoryblokLinkFieldType extends StoryblokGenericFieldType {
   link_scope?: string; // example: "categories/"
 }
 
-export interface StoryblokSectionSchemaFieldGrouping<TKeys = string> extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
-  type: 'section';
-  keys: TKeys[]
+export interface StoryblokSectionSchemaFieldGrouping<TKeys = string>
+  extends Omit<
+    StoryblokGenericFieldType,
+    "translatable" | "description" | "required"
+  > {
+  type: "section";
+  keys: TKeys[];
 }
 
-export interface StoryblokTabSchemaFieldGrouping<TKeys = string> extends Omit<StoryblokGenericFieldType, 'translatable' | 'description' | 'required'> {
-  type: 'tab';
-  keys: TKeys[]
+export interface StoryblokTabSchemaFieldGrouping<TKeys = string>
+  extends Omit<
+    StoryblokGenericFieldType,
+    "translatable" | "description" | "required"
+  > {
+  type: "tab";
+  keys: TKeys[];
 }
 
-export interface StoryblokOptionsFieldType<TOptionsName = string, TOptionsValue = string, TDefaultValue = string>
-    extends StoryblokGenericFieldType {
-  type: 'options';
+export interface StoryblokOptionsFieldType<
+  TOptionsName = string,
+  TOptionsValue = string,
+  TDefaultValue = string
+> extends StoryblokGenericFieldType {
+  type: "options";
   options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   min_options?: string;
   max_options?: string;
@@ -146,32 +171,43 @@ export interface StoryblokOptionsFieldType<TOptionsName = string, TOptionsValue 
   allow_advanced_search?: boolean;
   default_value?: TDefaultValue[];
   exclude_empty_option?: boolean;
-  use_uuid?: boolean
-  source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
+  use_uuid?: boolean;
+  source?: "internal" | "internal_stories" | "external" | "internal_languages";
   datasource_slug?: string; // or some custom Union of known datasources from the space
-  folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
-  filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
-  external_datasource?: string // url to external json, example: https://ef.design/datasource.json
+  folder_slug?: string; // just slug / path to stories we would like to get, example /my-stories
+  filter_content_type?: string[]; // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
+  external_datasource?: string; // url to external json, example: https://ef.design/datasource.json
 }
 
-export interface StoryblokOption<TOptionsName = string, TOptionsValue = string> {
+export interface StoryblokOption<
+  TOptionsName = string,
+  TOptionsValue = string
+> {
   options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
-  source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
+  source?: "internal" | "internal_stories" | "external" | "internal_languages";
   is_reference_type?: boolean;
   entry_appearance?: "card" | "link";
   allow_advanced_search?: boolean;
   datasource_slug?: string; // or some custom Union of known datasources from the space
-  folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
-  filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
-  external_datasource?: string // url to external json, example: https://ef.design/datasource.json
+  folder_slug?: string; // just slug / path to stories we would like to get, example /my-stories
+  filter_content_type?: string[]; // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
+  external_datasource?: string; // url to external json, example: https://ef.design/datasource.json
 }
 
-export type StoryblokOptionBPFieldType<TOptionsName = string, TOptionsValue = string> = StoryblokOptionFieldType<TOptionsName, TOptionsValue, BPDefaultValues<TOptionsValue>>
+export type StoryblokOptionBPFieldType<
+  TOptionsName = string,
+  TOptionsValue = string
+> = StoryblokOptionFieldType<
+  TOptionsName,
+  TOptionsValue,
+  BPDefaultValues<TOptionsValue>
+>;
 
-
-export interface StoryblokOptionFieldTypeV3<TOptions extends any, TDefaultValue = string>
-    extends StoryblokGenericFieldType {
-  type: 'option';
+export interface StoryblokOptionFieldTypeV3<
+  TOptions extends any,
+  TDefaultValue = string
+> extends StoryblokGenericFieldType {
+  type: "option";
   options?: TOptions;
   exclude_empty_option?: boolean;
   use_uuid?: boolean;
@@ -179,30 +215,36 @@ export interface StoryblokOptionFieldTypeV3<TOptions extends any, TDefaultValue 
   is_reference_type?: boolean;
   entry_appearance?: "card" | "link";
   allow_advanced_search?: boolean;
-  source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
+  source?: "internal" | "internal_stories" | "external" | "internal_languages";
   datasource_slug?: string; // or some custom Union of known datasources from the space
-  folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
-  filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
-  external_datasource?: string // url to external json, example: https://ef.design/datasource.json
+  folder_slug?: string; // just slug / path to stories we would like to get, example /my-stories
+  filter_content_type?: string[]; // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
+  external_datasource?: string; // url to external json, example: https://ef.design/datasource.json
 }
 
-export interface StoryblokOptionFieldType<TOptionsName = string, TOptionsValue = string, TDefaultValue = string>
-    extends StoryblokGenericFieldType {
-  type: 'option';
+export interface StoryblokOptionFieldType<
+  TOptionsName = string,
+  TOptionsValue = string,
+  TDefaultValue = string
+> extends StoryblokGenericFieldType {
+  type: "option";
   options?: StoryblokKeyValueOption<TOptionsName, TOptionsValue>[];
   exclude_empty_option?: boolean;
   use_uuid?: boolean;
   default_value?: TDefaultValue;
-  source?: 'internal' | 'internal_stories' | 'external' | 'internal_languages';
+  source?: "internal" | "internal_stories" | "external" | "internal_languages";
   datasource_slug?: string; // or some custom Union of known datasources from the space
-  folder_slug?: string, // just slug / path to stories we would like to get, example /my-stories
-  filter_content_type?: string[] // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
-  external_datasource?: string // url to external json, example: https://ef.design/datasource.json
+  folder_slug?: string; // just slug / path to stories we would like to get, example /my-stories
+  filter_content_type?: string[]; // array of content types - it can come from sb components that are not nestable, example: [ "page" ]
+  external_datasource?: string; // url to external json, example: https://ef.design/datasource.json
 }
 
-export interface StoryblokOptionFieldTypeV2<TDefaultValue = any, TOptions = StoryblokKeyValueOption<string, string>[]> extends StoryblokGenericFieldType {
-  type: 'option';
-  options: TOptions
+export interface StoryblokOptionFieldTypeV2<
+  TDefaultValue = any,
+  TOptions = StoryblokKeyValueOption<string, string>[]
+> extends StoryblokGenericFieldType {
+  type: "option";
+  options: TOptions;
   exclude_empty_option?: boolean;
   use_uuid?: boolean;
   default_value?: TDefaultValue;
@@ -211,24 +253,25 @@ export interface StoryblokOptionFieldTypeV2<TDefaultValue = any, TOptions = Stor
   allow_advanced_search?: boolean;
 }
 
-export type FileTypes = 'images' | 'videos' | 'audios' | 'texts'
+export type FileTypes = "images" | "videos" | "audios" | "texts";
 
 export interface StoryblokAssetFieldType extends StoryblokGenericFieldType {
-  type: 'asset';
-  filetypes?: FileTypes[] // empty array means - every filetype
-  allow_external_url?: boolean
-  asset_folder_id?: number // id of the default folder for assets field type
+  type: "asset";
+  filetypes?: FileTypes[]; // empty array means - every filetype
+  allow_external_url?: boolean;
+  asset_folder_id?: number; // id of the default folder for assets field type
 }
 
-export interface StoryblokMultiAssetFieldType extends StoryblokGenericFieldType {
-  type: 'multiasset';
-  filetypes: FileTypes[] // empty array means - every filetype
-  allow_external_url?: boolean
-  asset_folder_id: number // id of the default folder for assets field type
+export interface StoryblokMultiAssetFieldType
+  extends StoryblokGenericFieldType {
+  type: "multiasset";
+  filetypes: FileTypes[]; // empty array means - every filetype
+  allow_external_url?: boolean;
+  asset_folder_id: number; // id of the default folder for assets field type
 }
 
 export interface StoryblokTextFieldType extends StoryblokGenericFieldType {
-  type: 'text';
+  type: "text";
   default_value?: string;
   no_translate?: boolean; // if true, then the translations will not be exported by export translations plugin
   max_length?: number;
@@ -237,60 +280,57 @@ export interface StoryblokTextFieldType extends StoryblokGenericFieldType {
 }
 
 export interface StoryblokTextareaFieldType extends StoryblokGenericFieldType {
-  type: 'textarea';
+  type: "textarea";
   rtl?: boolean;
   max_length?: number;
   default_value?: string;
 }
 type CommonToolbarList =
-    "h1" |
-    "h2" |
-    "h3" |
-    "h4" |
-    "h5" |
-    "h6" |
-    "bold" |
-    "italic" |
-    "inlinecode" |
-    "code" |
-    "paragraph" |
-    "list" |
-    "quote" |
-    "olist" |
-    "link" |
-    "image" |
-    "sub" |
-    "sup" |
-    "emoji"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "bold"
+  | "italic"
+  | "inlinecode"
+  | "code"
+  | "paragraph"
+  | "list"
+  | "quote"
+  | "olist"
+  | "link"
+  | "image"
+  | "sub"
+  | "sup"
+  | "emoji";
 
-export type AIToolbarList = "ai-complete" |
-    "ai-shorten" |
-    "ai-extend" |
-    "ai-rephrase" |
-    "ai-summarize" |
-    "ai-simplify" |
-    "ai-tone" |
-    "ai-translate" |
-    "ai-emoji" |
-    "ai-tldr" |
-    "ai-spelling"
+export type AIToolbarList =
+  | "ai-complete"
+  | "ai-shorten"
+  | "ai-extend"
+  | "ai-rephrase"
+  | "ai-summarize"
+  | "ai-simplify"
+  | "ai-tone"
+  | "ai-translate"
+  | "ai-emoji"
+  | "ai-tldr"
+  | "ai-spelling";
 
-export type Headings =
-    "h1" |
-    "h2" |
-    "h3" |
-    "h4" |
-    "h5" |
-    "h6" |
-    "span" |
-    "p";
+export type Headings = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "p";
 
-
-
-export type RichTextToolbarList =  CommonToolbarList | AIToolbarList | "paste" | "blok" | "underline" | "strike"
+export type RichTextToolbarList =
+  | CommonToolbarList
+  | AIToolbarList
+  | "paste"
+  | "blok"
+  | "underline"
+  | "strike";
 
 export interface StoryblokRichTextType extends StoryblokGenericFieldType {
-  type: 'richtext';
+  type: "richtext";
   max_length?: number;
   style_options?: StoryblokKeyValueOption[];
   customize_toolbar?: boolean;
@@ -305,41 +345,47 @@ export interface StoryblokRichTextType extends StoryblokGenericFieldType {
 }
 
 export interface StoryblokTableFieldType extends StoryblokGenericFieldType {
-  type: 'table';
+  type: "table";
 }
 
-export type MarkdownToolbarList = CommonToolbarList | "help" |  "toggle-richtext";
+export type MarkdownToolbarList =
+  | CommonToolbarList
+  | "help"
+  | "toggle-richtext";
 
 export interface StoryblokMarkdownFieldType extends StoryblokGenericFieldType {
-  type: 'markdown';
+  type: "markdown";
   rich_markdown?: boolean;
   rtl?: boolean;
   allow_multiline?: boolean;
   customize_toolbar?: boolean;
   toolbar?: MarkdownToolbarList[];
   max_length?: number;
-  default_value?: string
+  default_value?: string;
 }
 
-
-export interface StoryblokBooleanFieldType<TDefaultValue = boolean> extends StoryblokGenericFieldType {
-  type: 'boolean';
+export interface StoryblokBooleanFieldType<TDefaultValue = boolean>
+  extends StoryblokGenericFieldType {
+  type: "boolean";
   default_value?: TDefaultValue;
   inline_label?: boolean;
 }
 
 interface BPDefaultValues<TDefaultValue = any> {
-  s?: TDefaultValue
-  m?: TDefaultValue
-  l?: TDefaultValue
-  xl?: TDefaultValue
-  xxl?: TDefaultValue
+  s?: TDefaultValue;
+  m?: TDefaultValue;
+  l?: TDefaultValue;
+  xl?: TDefaultValue;
+  xxl?: TDefaultValue;
 }
 
-export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<BPDefaultValues<boolean>>
+export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<
+  BPDefaultValues<boolean>
+>;
 
-export interface StoryblokNumberFieldType<TDefaultValue = string> extends StoryblokGenericFieldType {
-  type: 'number';
+export interface StoryblokNumberFieldType<TDefaultValue = number>
+  extends StoryblokGenericFieldType {
+  type: "number";
   no_translate?: boolean; // if true, then the translations will not be exported by export translations plugin
   default_value?: TDefaultValue;
   min_value?: number;
@@ -349,156 +395,159 @@ export interface StoryblokNumberFieldType<TDefaultValue = string> extends Storyb
 }
 
 export interface StoryblokDatetimeFieldType extends StoryblokGenericFieldType {
-  type: 'datetime';
+  type: "datetime";
   disable_time?: boolean;
-  default_value?: string
+  default_value?: string;
 }
 
 export interface StoryblokComponentSchema {
   [field: string]:
-      StoryblokTextFieldType |
-      StoryblokBooleanFieldType |
-      StoryblokBloksFieldType |
-      StoryblokMarkdownFieldType |
-      StoryblokLinkFieldType |
-      StoryblokCustomFieldType |
-      StoryblokOptionsFieldType |
-      StoryblokSectionSchemaFieldGrouping |
-      StoryblokTabSchemaFieldGrouping |
-      StoryblokTableFieldType |
-      StoryblokDatetimeFieldType |
-      StoryblokOptionFieldType |
-      StoryblokMultiAssetFieldType |
-      StoryblokAssetFieldType |
-      StoryblokNumberFieldType |
-      StoryblokRichTextType |
-      StoryblokTextareaFieldType;
+    | StoryblokTextFieldType
+    | StoryblokBooleanFieldType
+    | StoryblokBloksFieldType
+    | StoryblokMarkdownFieldType
+    | StoryblokLinkFieldType
+    | StoryblokCustomFieldType
+    | StoryblokOptionsFieldType
+    | StoryblokSectionSchemaFieldGrouping
+    | StoryblokTabSchemaFieldGrouping
+    | StoryblokTableFieldType
+    | StoryblokDatetimeFieldType
+    | StoryblokOptionFieldType
+    | StoryblokMultiAssetFieldType
+    | StoryblokAssetFieldType
+    | StoryblokNumberFieldType
+    | StoryblokRichTextType
+    | StoryblokTextareaFieldType;
 }
 
-export type ComponentPreviewIcon = "block-@" |
-  "block-1-2block" |
-  "block-add" |
-  "block-arrow-pointer" |
-  "block-block" |
-  "block-buildin" |
-  "block-center-m" |
-  "block-comment" |
-  "block-doc" |
-  "block-dollar-sign" |
-  "block-email" |
-  "block-image" |
-  "block-keyboard" |
-  "block-locked" |
-  "block-map-pin" |
-  "block-mobile" |
-  "block-monitor" |
-  "block-paycard" |
-  "block-resize-fc" |
-  "block-cart" |
-  "block-share" |
-  "block-shield-2" |
-  "block-shield" |
-  "block-sticker" |
-  "block-suitcase" |
-  "block-table-2" |
-  "block-table" |
-  "block-tag" |
-  "block-text-c" |
-  "block-text-img-c" |
-  "block-text-img-l" |
-  "block-text-img-r-l" |
-  "block-text-img-r" |
-  "block-text-img-t-l" |
-  "block-text-img-t-r" |
-  "block-text-l" |
-  "block-text-r" |
-  "block-unlocked" |
-  "block-wallet"
+export type ComponentPreviewIcon =
+  | "block-@"
+  | "block-1-2block"
+  | "block-add"
+  | "block-arrow-pointer"
+  | "block-block"
+  | "block-buildin"
+  | "block-center-m"
+  | "block-comment"
+  | "block-doc"
+  | "block-dollar-sign"
+  | "block-email"
+  | "block-image"
+  | "block-keyboard"
+  | "block-locked"
+  | "block-map-pin"
+  | "block-mobile"
+  | "block-monitor"
+  | "block-paycard"
+  | "block-resize-fc"
+  | "block-cart"
+  | "block-share"
+  | "block-shield-2"
+  | "block-shield"
+  | "block-sticker"
+  | "block-suitcase"
+  | "block-table-2"
+  | "block-table"
+  | "block-tag"
+  | "block-text-c"
+  | "block-text-img-c"
+  | "block-text-img-l"
+  | "block-text-img-r-l"
+  | "block-text-img-r"
+  | "block-text-img-t-l"
+  | "block-text-img-t-r"
+  | "block-text-l"
+  | "block-text-r"
+  | "block-unlocked"
+  | "block-wallet";
 
 export interface Preset {
   preset: {
-    id?: number // only when comming from Storyblok instance
-    name: string
-    preset: any
-    created_at?: string
-    updated_at?: string
-    image?: string
-    color?: string
-    icon?: ComponentPreviewIcon
-    description?: string
-  }
+    id?: number; // only when comming from Storyblok instance
+    name: string;
+    preset: any;
+    created_at?: string;
+    updated_at?: string;
+    image?: string;
+    color?: string;
+    icon?: ComponentPreviewIcon;
+    description?: string;
+  };
 }
 
-export interface StoryblokComponentSchemaBase<TSchema = StoryblokComponentSchema> {
+export interface StoryblokComponentSchemaBase<
+  TSchema = StoryblokComponentSchema
+> {
   name: string;
   created_at?: string;
   updated_at?: string;
-  id?: string
+  id?: string;
   display_name?: string;
   description?: string;
   component_group_name?: string;
   is_root: boolean;
   is_nestable: boolean;
   /*
-  * any string to jpg/png available publicly on the internet
-  * */
+   * any string to jpg/png available publicly on the internet
+   * */
   image?: string;
   /*
-  * stringified html / squirell template "<div>{{test_text}}</div>\n<div>whatever</div>",
-  *
-  * https://squirrelly.js.org/
-  * https://www.storyblok.com/docs/schema-configuration#preview-template
-  * */
+   * stringified html / squirell template "<div>{{test_text}}</div>\n<div>whatever</div>",
+   *
+   * https://squirrelly.js.org/
+   * https://www.storyblok.com/docs/schema-configuration#preview-template
+   * */
   preview_field?: any;
   preview_tmpl?: string;
   preset_id?: any;
   real_name?: string;
   component_group_uuid?: string;
   /*
-  * any color string
-  * */
+   * any color string
+   * */
   color?: string;
-  icon?: ComponentPreviewIcon
+  icon?: ComponentPreviewIcon;
   schema: TSchema;
-  all_presets?: Preset[]
+  all_presets?: Preset[];
   internal_tags_list?: {
-    id: number
-    name: string
-  }[]
-  internal_tag_ids?: string[]
-  content_type_asset_preview?: any
+    id: number;
+    name: string;
+  }[];
+  internal_tag_ids?: string[];
+  content_type_asset_preview?: any;
 }
 
 interface Dimension {
-  name: string
-  entry_value: string
+  name: string;
+  entry_value: string;
 }
 
 interface DatasourceEntry {
-  name: string
-  value: string
+  name: string;
+  value: string;
   dimension_values?: {
-    [index: string]: string,
-  }
+    [index: string]: string;
+  };
 }
 export interface StoryblokDatasourceSchemaBase {
   name: string;
   slug: string;
-  dimensions: Dimension[]
-  datasource_entries: DatasourceEntry[]
+  dimensions: Dimension[];
+  datasource_entries: DatasourceEntry[];
 }
 
 export interface StoryblokRolesSchemaBase {
-  resolved_allowed_paths?: string[],
-  allowed_paths?: string[],
-  field_permissions?: string[],
-  permissions?: string[],
-  role: string,
-  subtitle?: string | null,
-  datasource_ids?: any[],
-  component_ids?: any[],
-  branch_ids?: any[],
-  allowed_languages?: any[],
-  asset_folder_ids?: any[],
-  ext_id?: any | null,
+  resolved_allowed_paths?: string[];
+  allowed_paths?: string[];
+  field_permissions?: string[];
+  permissions?: string[];
+  role: string;
+  subtitle?: string | null;
+  datasource_ids?: any[];
+  component_ids?: any[];
+  branch_ids?: any[];
+  allowed_languages?: any[];
+  asset_folder_ids?: any[];
+  ext_id?: any | null;
 }
