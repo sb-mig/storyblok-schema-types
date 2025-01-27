@@ -8,7 +8,7 @@ export interface StoryblokMultilinkFieldReturnType {
   target?: "_blank";
   anchor?: string;
 }
-export type StoryblokNumberFieldReturnType = number;
+export type StoryblokNumberFieldReturnType = string;
 export type StoryblokDatetimeFieldReturnType = string;
 export type StoryblokBooleanFieldReturnType = boolean;
 export type StoryblokTextFieldReturnType = string;
