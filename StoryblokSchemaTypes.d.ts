@@ -383,7 +383,13 @@ export type StoryblokBooleanBPFieldType = StoryblokBooleanFieldType<
   BPDefaultValues<boolean>
 >;
 
-export interface StoryblokNumberFieldType<TDefaultValue = number>
+// NOTE: `default_value` defaults to `string` (not `number`) because Storyblok
+// stores/returns number-field values as strings. The Management API "Component
+// Schema Field Object" documents `default_value` as a string, and the Content
+// Delivery API returns number fields as strings (hence `sort_by=...:int|:float`
+// casts). Keeping this `number` while `StoryblokNumberFieldReturnType = string`
+// made `Input & { default_value?: Output }` collapse to `never`. See GCTT-3813.
+export interface StoryblokNumberFieldType<TDefaultValue = string>
   extends StoryblokGenericFieldType {
   type: "number";
   no_translate?: boolean; // if true, then the translations will not be exported by export translations plugin
